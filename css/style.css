@@ -338,11 +338,14 @@ body {
   line-height: 24px;
   font-family: "Actor", "Arial", sans-serif;
   color: #000000;
-  background-color: #F2F2F2;
+  background-color: #ffffff;
 }
 
 main {
   display: grid;
+  grid-template-columns: 289px 1fr;
+  grid-template-rows: 811px 100px;
+  flex-grow: 1;
 }
 
 img {
@@ -355,10 +358,15 @@ img {
 
 a {
   text-decoration: none;
+  color: #000000;
 }
 
 textarea {
   resize: none;
+}
+
+button {
+  cursor: pointer;
 }
 
 .container {
@@ -391,11 +399,314 @@ textarea {
 }
 
 /* Blocks */
+.aside {
+  grid-column: 1/1;
+  background-color: #F2F2F2;
+}
 .aside__logo {
   padding: 20px 53px;
   background-color: #ffffff;
+  border-right: 1px solid #E8E8E8;
+  margin: 0 0 46px;
 }
 .aside__svg {
   width: 184px;
   height: 30px;
+}
+.aside__menu {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.aside__button {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  border: none;
+  background-color: none;
+  padding: 9px 31px;
+  transition: background-color 0.2s ease-in;
+}
+.aside__button:focus-visible, .aside__button:hover {
+  background-color: #ffffff;
+}
+.aside__button:active {
+  background-color: #ecfdeb;
+}
+.aside .is-active {
+  background-color: #ffffff;
+}
+.aside__button-icon {
+  width: 32px;
+  height: 32px;
+}
+.aside__button-text {
+  font-size: 20px;
+  line-height: 100%;
+}
+
+.hero {
+  padding: 15px 30px 83px 46px;
+}
+.hero__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.hero__header-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 13px;
+  border: none;
+  background-color: #F2F2F2;
+  border-radius: 30px;
+  width: 246px;
+  transition: background-color 0.2s ease-in;
+}
+.hero__header-button:focus-visible, .hero__header-button:hover {
+  background-color: rgb(207, 207, 207);
+}
+.hero__header-content {
+  display: flex;
+  gap: 11px;
+  align-items: center;
+}
+.hero__header-icon {
+  width: 42px;
+  height: 42px;
+}
+.hero .hero__header-icon--arrow {
+  width: 16px;
+  height: 16px;
+}
+
+.custom-input {
+  position: relative;
+  margin: 0 0 35px;
+}
+.custom-input__field {
+  width: 798px;
+  height: 53px;
+  border-radius: 30px;
+  outline: none;
+  border: none;
+  background-color: #F2F2F2;
+  padding: 20px 44px;
+  transition: border-color 0.3s ease-in;
+  border: 1px solid;
+  border-color: transparent;
+}
+.custom-input__field:focus-visible, .custom-input__field:hover {
+  border-color: black;
+}
+.custom-input__field::-moz-placeholder {
+  letter-spacing: 0.09em;
+  font-size: 12px;
+  line-height: 12px;
+  text-transform: uppercase;
+}
+.custom-input__field::placeholder {
+  letter-spacing: 0.09em;
+  font-size: 12px;
+  line-height: 12px;
+  text-transform: uppercase;
+}
+.custom-input__icon {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  top: 13px;
+  left: 12px;
+}
+
+.table {
+  padding: 0 30px 0 46px;
+}
+.table__title {
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 100%;
+  margin: 0 0 22px;
+}
+.table th {
+  font-size: 12px;
+  line-height: 12px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: #AAAAAA;
+  text-align: left;
+  padding: 10px 0;
+  border-bottom: 1px solid #E8E8E8;
+}
+.table th:first-child {
+  min-width: 40px;
+}
+.table th:nth-child(2) {
+  min-width: 434px;
+}
+.table th:nth-child(3) {
+  min-width: 262px;
+}
+.table th:nth-child(4) {
+  min-width: 239px;
+}
+.table th:last-child {
+  min-width: 99px;
+  width: 100%;
+}
+.table td {
+  padding: 14px 0;
+  border-bottom: 1px solid #E8E8E8;
+}
+.table__artist-album {
+  font-size: 14px;
+  line-height: 12px;
+  letter-spacing: 0.01em;
+}
+.table__artist-song {
+  font-size: 12px;
+  line-height: 12px;
+  letter-spacing: 0.01em;
+  color: #AAAAAA;
+}
+.table__icon {
+  width: 24px;
+  height: 24px;
+}
+.table__icon--option {
+  width: 23px;
+  height: 4px;
+}
+.table__icons {
+  width: 16px;
+  height: 16px;
+}
+.table__artist {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.table__artist-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.table__date {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.table__option, .table__date-like {
+  border: none;
+  background-color: transparent;
+}
+.table__option {
+  padding: 5px;
+}
+.table__date-text, .table__time {
+  color: #AAAAAA;
+  font-size: 14px;
+  line-height: 12px;
+  letter-spacing: 0.01em;
+}
+.table__time {
+  padding-left: 8px;
+}
+.table__last {
+  display: flex;
+  align-items: center;
+  gap: 23px;
+}
+
+.pleer {
+  grid-column: span 2;
+  height: 100px;
+  padding: 10px 30px 20px;
+  border-top: 1px solid #E8E8E8;
+  display: grid;
+  grid-template-columns: 434px, 681px, 97px;
+  gap: 84px;
+  align-items: flex-end;
+}
+.pleer__album {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  grid-column: 1/2;
+}
+.pleer__artist {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.pleer__artist-song {
+  font-size: 14px;
+  line-height: 12px;
+  letter-spacing: 0.01em;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.pleer__artist-name {
+  font-size: 12px;
+  line-height: 12px;
+  letter-spacing: 0.01em;
+  color: #AAAAAA;
+}
+.pleer__artist-button {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+}
+.pleer__artist-like {
+  width: 24px;
+  height: 24px;
+}
+.pleer__interface {
+  grid-column: 2/3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+.pleer__sound {
+  grid-column: 3/4;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.pleer__sound-icon {
+  width: 16px;
+  height: 16px;
+}
+.pleer__sound-input {
+  width: 72px;
+  height: 6px;
+}
+.pleer__buttons {
+  display: flex;
+  gap: 20px;
+}
+.pleer__buttons-shufle, .pleer__buttons-back, .pleer__buttons-forward, .pleer__buttons-repeat {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
+.pleer__buttons-play {
+  background-color: #AAAAAA;
+  border: none;
+  border-radius: 86px;
+  width: 40px;
+  height: 40px;
+  padding: 3px 0 0 2px;
+}
+.pleer__bottom {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.pleer__bottom-scroll {
+  width: 609px;
+  height: 6px;
 }/*# sourceMappingURL=style.css.map */

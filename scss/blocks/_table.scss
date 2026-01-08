@@ -1,0 +1,122 @@
+.table {
+    padding: 0 30px 0 46px;
+
+    &__title {
+        font-weight: 400;
+        font-size: 30px;
+        line-height: 100%;
+        margin: 0 0 22px;
+    }
+
+    th {
+        font-size: 12px;
+        line-height: 12px;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+        color: #AAAAAA;
+        text-align: left;
+        padding: 10px 0;
+        border-bottom: 1px solid #E8E8E8;
+
+        &:first-child {
+            min-width: 40px;
+        }
+
+        &:nth-child(2) {
+            min-width: 434px;
+        }
+
+        &:nth-child(3) {
+            min-width: 262px;
+        }
+
+        &:nth-child(4) {
+            min-width: 239px;
+        }
+
+        &:last-child {
+            min-width: 99px;
+            width: 100%;
+        }
+    }
+
+    td {
+        padding: 14px 0;
+        border-bottom: 1px solid #E8E8E8;
+    }
+
+    &__artist-album {
+        font-size: 14px;
+        line-height: 12px;
+        letter-spacing: 0.01em;
+    }
+
+    &__artist-song {
+        font-size: 12px;
+        line-height: 12px;
+        letter-spacing: 0.01em;
+        color: #AAAAAA;
+    }
+
+    &__icon {
+        width: 24px;
+        height: 24px;
+
+        &--option {
+            width: 23px;
+            height: 4px;
+        }
+    }
+
+    &__icons {
+        width: 16px;
+        height: 16px;
+    }
+
+    &__artist {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+
+
+    &__artist-content {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    &__date {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__option,
+    &__date-like {
+        border: none;
+        background-color: transparent;
+    }
+
+    &__option {
+        padding: 5px;
+    }
+
+    &__date-text,
+    &__time {
+        color: #AAAAAA;
+        font-size: 14px;
+        line-height: 12px;
+        letter-spacing: 0.01em;
+    }
+
+    &__time {
+        padding-left: 8px;
+    }
+
+    &__last {
+        display: flex;
+        align-items: center;
+        gap: 23px;
+    }
+}

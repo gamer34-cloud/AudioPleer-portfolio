@@ -1,0 +1,37 @@
+.custom-input {
+    position: relative;
+    margin: 0 0 35px;
+
+    &__field {
+        width: 798px;
+        height: 53px;
+        border-radius: 30px;
+        outline: none;
+        border: none;
+        background-color: $color-white-smoke;
+        padding: 20px 44px;
+        transition: border-color 0.3s ease-in;
+        border: 1px solid;
+        border-color: transparent;
+
+        &:focus-visible,
+        &:hover {
+            border-color: black;
+        }
+
+        &::placeholder {
+            letter-spacing: 0.09em;
+            font-size: 12px;
+            line-height: 12px;
+            text-transform: uppercase;
+        }
+    }
+
+    &__icon {
+        width: 24px;
+        height: 24px;
+        position: absolute;
+        top: 13px;
+        left: 12px;
+    }
+}

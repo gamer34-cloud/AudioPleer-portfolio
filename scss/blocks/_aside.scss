@@ -1,12 +1,55 @@
 .aside {
+    grid-column: 1 / 1;
+    background-color: $color-white-smoke;
 
     &__logo {
         padding: 20px 53px;
         background-color: $color-white;
+        border-right: 1px solid #E8E8E8;
+        margin: 0 0 46px;
     }
 
     &__svg {
         width: 184px;
         height: 30px;
+    }
+
+    &__menu {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    &__button {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        border: none;
+        background-color: none;
+        padding: 9px 31px;
+        transition: background-color 0.2s ease-in;
+
+        &:focus-visible,
+        &:hover {
+            background-color: #ffffff;
+        }
+
+        &:active {
+            background-color: #ecfdeb;
+        }
+    }
+
+    .is-active {
+        background-color: $color-white;
+    }
+
+    &__button-icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    &__button-text {
+        font-size: 20px;
+        line-height: 100%;
     }
 }

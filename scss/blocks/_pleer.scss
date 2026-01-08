@@ -1,0 +1,111 @@
+.pleer {
+    grid-column: span 2;
+    height: 100px;
+    padding: 10px 30px 20px;
+    border-top: 1px solid #E8E8E8;
+    display: grid;
+    grid-template-columns: 434px, 681px, 97px;
+    gap: 84px;
+    align-items: flex-end;
+
+    &__album {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        grid-column: 1 / 2;
+    }
+
+    &__artist {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        &-song {
+            font-size: 14px;
+            line-height: 12px;
+            letter-spacing: 0.01em;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        &-name {
+            font-size: 12px;
+            line-height: 12px;
+            letter-spacing: 0.01em;
+            color: #AAAAAA;
+        }
+
+        &-button {
+            border: none;
+            background-color: transparent;
+            padding: 0;
+        }
+
+        &-like {
+            width: 24px;
+            height: 24px;
+        }
+    }
+
+    &__interface {
+        grid-column: 2 / 3;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+    }
+
+    &__sound {
+        grid-column: 3 / 4;
+        display: flex;
+        align-items: center;
+        gap: 9px;
+
+        &-icon {
+            width: 16px;
+            height: 16px;
+        }
+
+        &-input {
+            width: 72px;
+            height: 6px;
+        }
+    }
+
+    &__buttons {
+        display: flex;
+        gap: 20px;
+
+        &-shufle,
+        &-back,
+        &-forward,
+        &-repeat {
+            background-color: transparent;
+            border: none;
+            padding: 0;
+        }
+
+        &-play {
+            background-color: #AAAAAA;
+            border: none;
+            border-radius: 86px;
+            width: 40px;
+            height: 40px;
+            padding: 3px 0 0 2px;
+        }
+    }
+
+    &__bottom {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        &-scroll {
+            width: 609px;
+            height: 6px;
+        }
+    }
+
+
+}

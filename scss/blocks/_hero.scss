@@ -1,0 +1,44 @@
+.hero {
+    padding: 15px 30px 83px 46px;
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    &__header-button {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 6px 13px;
+        border: none;
+        background-color: $color-white-smoke;
+        border-radius: 30px;
+        width: 246px;
+        transition: background-color 0.2s ease-in;
+
+        &:focus-visible,
+        &:hover {
+            background-color: rgb(207, 207, 207);
+        }
+
+    }
+
+    &__header-content {
+        display: flex;
+        gap: 11px;
+        align-items: center;
+    }
+
+    &__header-icon {
+        width: 42px;
+        height: 42px;
+    }
+
+    .hero__header-icon--arrow {
+        width: 16px;
+        height: 16px;
+    }
+
+}

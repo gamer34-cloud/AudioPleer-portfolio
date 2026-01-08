@@ -18,11 +18,14 @@ body {
   line-height: 24px;
   font-family: $ff-main;
   color: $color-black;
-  background-color: $color-white-smoke;
+  background-color: $color-white;
 }
 
 main {
   display: grid;
+  grid-template-columns: 289px 1fr;
+  grid-template-rows: 811px 100px;
+  flex-grow: 1;
 }
 
 img {
@@ -34,8 +37,15 @@ img {
 
 a {
   text-decoration: none;
+  color: $color-black;
 }
 
 textarea {
   resize: none;
 }
+
+button {
+  cursor: pointer;
+
+}
+

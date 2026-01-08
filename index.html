@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AudioPleer</title>
     <link href="./css/style.css" rel="stylesheet">
-    <script src="./ts/main.ts" type="module" defer></script>
 </head>
 
 <body>
@@ -19,8 +18,165 @@
                     </svg>
                 </a>
             </div>
+            <div class="aside__menu">
+                <button class="aside__button">
+                    <svg class="aside__button-icon" xmlns="http://www.w3.org/2000/svg">
+                        <use xlink:href="./images/sprite.svg#icon-music"></use>
+                    </svg>
+                    <span class="aside__button-text">Избранное</span>
+                </button>
+                <button class="aside__button is-active">
+                    <svg class="aside__button-icon" xmlns="http://www.w3.org/2000/svg">
+                        <use xlink:href="./images/sprite.svg#icon-music"></use>
+                    </svg>
+                    <span class="aside__button-text">Аудиокомпозиции</span>
+                </button>
+            </div>
         </aside>
+        <div class="container-table">
+            <section class="hero">
+                <div class="hero__header">
+                    <form class="hero__form" action="#">
+                        <div class="custom-input">
+                            <input class="custom-input__field" type="text" placeholder="Что будем искать?"
+                                id="input-search">
+                            <svg class="custom-input__icon" xmlns="http://www.w3.org/2000/svg">
+                                <use xlink:href="./images/sprite.svg#icon-search"></use>
+                            </svg>
+                        </div>
+                    </form>
+                    <a class="hero__header-button" href="#">
+                        <div class="hero__header-content">
+                            <svg class="hero__header-icon" xmlns="http://www.w3.org/2000/svg">
+                                <use xlink:href="./images/sprite.svg#icon-user"></use>
+                            </svg>
+                            <span class="hero__header-text">username</span>
+                        </div>
+                        <svg class="hero__header-icon hero__header-icon--arrow" xmlns="http://www.w3.org/2000/svg">
+                            <use xlink:href="./images/sprite.svg#icon-arrow-orange"></use>
+                        </svg>
+                    </a>
+                </div>
+            </section>
+            <section class="table">
+                <h1 class="table__title">Аудифайлы и треки</h1>
+                <table>
+                    <tr>
+                        <th>№</th>
+                        <th>Название</th>
+                        <th>АЛЬБОМ</th>
+                        <th>
+                            <svg class="table__icons" xmlns="http://www.w3.org/2000/svg">
+                                <use xlink:href="./images/sprite.svg#icon-date"></use>
+                            </svg>
+                        </th>
+                        <th>
+                            <svg class="table__icons" xmlns="http://www.w3.org/2000/svg">
+                                <use xlink:href="./images/sprite.svg#icon-clock"></use>
+                            </svg>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>
+                            <div class="table__artist">
+                                <img class="table__artist-img" src="./images/img-oblojca.jpg"
+                                    alt="Обложка группы нирвана">
+                                <div class="table__artist-content">
+                                    <span class="table__artist-album">In Bloom</span>
+                                    <span class="table__artist-song">Nirvana</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="hero__table-album">Nirvana</span>
+                        </td>
+                        <td>
+                            <div class="table__date">
+                                <span class="table__date-text">6 дней назад</span>
+                                <button class="table__date-like">
+                                    <svg class="table__icon" xmlns="http://www.w3.org/2000/svg">
+                                        <use xlink:href="./images/sprite.svg#icon-like"></use>
+                                    </svg>
+                                </button>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="table__last">
+                                <span class="table__time">5:35</span>
+                                <button class="table__option">
+                                    <svg class="table__icon table-icon--option" xmlns="http://www.w3.org/2000/svg">
+                                        <use xlink:href="./images/sprite.svg#icon-option"></use>
+                                    </svg>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+
+                </table>
+            </section>
+        </div>
+        <section class="pleer">
+            <div class="pleer__album">
+                <img src="./images/img-pleer-album.jpg" alt="Обложка" class="pleer__album-img">
+                <div class="pleer__artist">
+                    <span class="pleer__artist-song">Histoire Sans Nom
+                        <button type="button" class="pleer__artist-button">
+                            <svg class="pleer__artist-like" xmlns="http://www.w3.org/2000/svg">
+                                <use xlink:href="./images/sprite.svg#icon-like"></use>
+                            </svg>
+                        </button>
+                    </span>
+                    <span class="pleer__artist-name">Ludovico Einaudi, Czech National Symphony Orchestra</span>
+                </div>
+            </div>
+            <div class="pleer__interface">
+                <div class="pleer__buttons">
+                    <button class="pleer__buttons-shufle">
+                        <svg class="pleer__artist-like" xmlns="http://www.w3.org/2000/svg">
+                            <use xlink:href="./images/sprite.svg#icon-shufle"></use>
+                        </svg>
+                    </button>
+                    <button class="pleer__buttons-back">
+                        <svg class="pleer__artist-like" xmlns="http://www.w3.org/2000/svg">
+                            <use xlink:href="./images/sprite.svg#icon-back"></use>
+                        </svg>
+                    </button>
+                    <button class="pleer__buttons-play">
+                        <svg class="pleer__artist-like" xmlns="http://www.w3.org/2000/svg">
+                            <use xlink:href="./images/sprite.svg#icon-play"></use>
+                        </svg>
+                    </button>
+                    <button class="pleer__buttons-forward">
+                        <svg class="pleer__artist-like" xmlns="http://www.w3.org/2000/svg">
+                            <use xlink:href="./images/sprite.svg#icon-forward"></use>
+                        </svg>
+                    </button>
+                    <button class="pleer__buttons-repeat">
+                        <svg class="pleer__artist-like" xmlns="http://www.w3.org/2000/svg">
+                            <use xlink:href="./images/sprite.svg#icon-repeat"></use>
+                        </svg>
+                    </button>
+                </div>
+                <div class="pleer__bottom">
+                    <span class="pleer__bottom-start">0:26</span>
+                    <form action="#" class="pleer__bottom-form">
+                        <input class="pleer__bottom-scroll" type="range">
+                    </form>
+                    <span class="pleer__bottom-end">6:55</span>
+                </div>
+            </div>
+            <div class="pleer__sound">
+                <svg class="pleer__sound-icon" xmlns="http://www.w3.org/2000/svg">
+                    <use xlink:href="./images/sprite.svg#icon-volume"></use>
+                </svg>
+                <form action="#" class="pleer__sound-form">
+                    <input class="pleer__sound-input" type="range">
+                </form>
+            </div>
+        </section>
     </main>
+    <script src="./ts/main.ts" type="module"></script>
 </body>
 
 </html>
