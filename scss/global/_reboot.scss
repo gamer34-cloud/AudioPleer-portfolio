@@ -24,8 +24,13 @@ body {
 main {
   display: grid;
   grid-template-columns: 289px 1fr;
-  grid-template-rows: 811px 100px;
+  grid-template-rows: 1fr 100px;
   flex-grow: 1;
+
+  @include vp-1023 {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 120px;
+  }
 }
 
 img {
@@ -44,8 +49,8 @@ textarea {
   resize: none;
 }
 
+input[type="range"],
 button {
   cursor: pointer;
 
 }
-

@@ -2,6 +2,10 @@
     grid-column: 1 / 1;
     background-color: $color-white-smoke;
 
+    @include vp-1023 {
+        display: none;
+    }
+
     &__logo {
         padding: 20px 53px;
         background-color: $color-white;

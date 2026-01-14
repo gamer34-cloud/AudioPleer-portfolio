@@ -1,11 +1,33 @@
 .table {
-    padding: 0 30px 0 46px;
+    padding: 20px 30px 0 46px;
+    display: flex;
+    flex-direction: column;
+
+    #table {
+        border-spacing: 0px;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    @include vp-1023 {
+        background-color: $color-white-smoke;
+        height: 100%;
+        align-items: center;
+    }
+
+    @include vp-767 {
+        padding: 20px 16px 30px;
+    }
 
     &__title {
         font-weight: 400;
         font-size: 30px;
         line-height: 100%;
         margin: 0 0 22px;
+
+        @include vp-1023 {
+            display: none;
+        }
     }
 
     th {
@@ -18,20 +40,38 @@
         padding: 10px 0;
         border-bottom: 1px solid #E8E8E8;
 
+        @include vp-1023 {
+            display: none;
+        }
+
         &:first-child {
             min-width: 40px;
         }
 
         &:nth-child(2) {
             min-width: 434px;
+
+            @media(max-width: 1439px) {
+                min-width: 230px;
+            }
         }
 
         &:nth-child(3) {
             min-width: 262px;
+
+            @media(max-width: 1439px) {
+                min-width: 140px;
+
+            }
         }
 
         &:nth-child(4) {
             min-width: 239px;
+
+            @media(max-width: 1439px) {
+                min-width: 140px;
+                width: 100%;
+            }
         }
 
         &:last-child {
@@ -40,27 +80,140 @@
         }
     }
 
+    tr {
+        @include vp-1023 {
+            background-color: $color-white;
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        margin: 0 0 20px;
+    }
+
     td {
         padding: 14px 0;
         border-bottom: 1px solid #E8E8E8;
+
+        @include vp-1023 {
+            border: none;
+
+            &:nth-child(3),
+            &:first-child {
+                display: none;
+            }
+
+            &:nth-child(2) {
+                margin: 0 auto 0 0;
+            }
+
+            padding: 0;
+        }
     }
 
-    &__artist-album {
-        font-size: 14px;
-        line-height: 12px;
-        letter-spacing: 0.01em;
+    &__mobale {
+        display: none;
+
+        @include vp-767 {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        &-button {
+            background-color: #FC6D3E;
+            color: $color-white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 30px;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+
+            &--favorite {
+                gap: 0;
+                background-color: $color-white;
+                color: $color-black;
+            }
+
+        }
+
+        &-svg {
+            width: 24px;
+            height: 24px;
+        }
     }
 
-    &__artist-song {
-        font-size: 12px;
-        line-height: 12px;
-        letter-spacing: 0.01em;
-        color: #AAAAAA;
+    &__artist {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+
+        &-album {
+            font-size: 14px;
+            line-height: 12px;
+            letter-spacing: 0.01em;
+
+            @include vp-1023 {
+                font-size: 18px;
+                line-height: 100%;
+            }
+        }
+
+        &-button {
+            padding: 0;
+            background-color: transparent;
+            border: none;
+            transition: background-color 0.3s linear;
+            position: relative;
+
+            &:hover {
+                .table__artist-svg {
+                    opacity: 1;
+                }
+            }
+        }
+
+        &-svg {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            top: 19px;
+            left: 17px;
+            opacity: 0;
+            transition: opacity 0.3s linear;
+        }
+
+        &-song {
+            font-size: 12px;
+            line-height: 12px;
+            letter-spacing: 0.01em;
+            color: #AAAAAA;
+        }
+
+        &-content {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        &-img {
+            @include vp-1023 {
+                width: 70px;
+                height: 70px;
+            }
+        }
     }
 
     &__icon {
         width: 24px;
         height: 24px;
+        color: transparent;
+        transition: color 0.3s linear;
+
+        &:hover {
+            color: rgb(255, 219, 219);
+        }
 
         &--option {
             width: 23px;
@@ -68,22 +221,15 @@
         }
     }
 
+    .liked {
+        .table__icon {
+            color: #FC6D3E;
+        }
+    }
+
     &__icons {
         width: 16px;
         height: 16px;
-    }
-
-    &__artist {
-        display: flex;
-        gap: 10px;
-        align-items: center;
-    }
-
-
-    &__artist-content {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
     }
 
     &__date {
@@ -108,6 +254,10 @@
         font-size: 14px;
         line-height: 12px;
         letter-spacing: 0.01em;
+
+        @include vp-1023 {
+            display: none;
+        }
     }
 
     &__time {

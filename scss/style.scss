@@ -6,6 +6,7 @@
 @import "global/_reboot";
 @import "global/_container";
 @import "global/_visually-hidden";
+@import "global/_overlay";
 
 /* Blocks */
 @import "blocks/_aside";
@@ -13,3 +14,5 @@
 @import "blocks/_custom-input";
 @import "blocks/_table";
 @import "blocks/_pleer";
+@import "blocks/_modal-window";
+@import "blocks/_form-enter";

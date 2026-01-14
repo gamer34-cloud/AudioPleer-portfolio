@@ -11,9 +11,11 @@
     "build": "vite build"
   },
   "dependencies": {
+    "just-validate": "^4.3.0",
     "redom": "^4.3.0"
   },
   "devDependencies": {
+    "@types/node": "^25.0.6",
     "vite": "^7.3.0"
   }
 }

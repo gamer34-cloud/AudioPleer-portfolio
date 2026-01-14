@@ -8,17 +8,47 @@
     gap: 84px;
     align-items: flex-end;
 
+    @include vp-1023 {
+        background-color: $color-white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        height: 120px;
+        padding: 14px 8px;
+    }
+
     &__album {
         display: flex;
         gap: 10px;
         align-items: center;
         grid-column: 1 / 2;
+
+        &-play {
+            display: none;
+            background-color: #AAAAAA;
+            border: none;
+            border-radius: 86px;
+            width: 40px;
+            height: 40px;
+            padding: 8px 0 0 8px;
+
+            @include vp-1023 {
+                display: flex;
+            }
+        }
     }
 
     &__artist {
         display: flex;
         flex-direction: column;
         gap: 10px;
+        margin: 0 10px 0 0;
+
+        @include vp-767 {
+            width: 200px;
+        }
 
         &-song {
             font-size: 14px;
@@ -45,6 +75,19 @@
         &-like {
             width: 24px;
             height: 24px;
+            color: transparent;
+
+            transition: color 0.3s linear;
+
+            &:hover {
+                color: rgb(255, 219, 219);
+            }
+        }
+    }
+
+    .liked {
+        .pleer__artist-like {
+            color: #FC6D3E;
         }
     }
 
@@ -54,22 +97,9 @@
         flex-direction: column;
         align-items: center;
         gap: 6px;
-    }
 
-    &__sound {
-        grid-column: 3 / 4;
-        display: flex;
-        align-items: center;
-        gap: 9px;
-
-        &-icon {
-            width: 16px;
-            height: 16px;
-        }
-
-        &-input {
-            width: 72px;
-            height: 6px;
+        @include vp-767 {
+            gap: 0;
         }
     }
 
@@ -84,6 +114,10 @@
             background-color: transparent;
             border: none;
             padding: 0;
+
+            @include vp-1023 {
+                display: none;
+            }
         }
 
         &-play {
@@ -93,6 +127,10 @@
             width: 40px;
             height: 40px;
             padding: 3px 0 0 2px;
+
+            @include vp-1023 {
+                display: none;
+            }
         }
     }
 
@@ -103,6 +141,40 @@
 
         &-scroll {
             width: 609px;
+            height: 6px;
+
+            @media (max-width: 1299px) {
+                width: 264px;
+            }
+        }
+
+        &-start,
+        &-end {
+            color: #AAAAAA;
+
+            @include vp-1023 {
+                font-size: 13px;
+            }
+        }
+    }
+
+    &__sound {
+        grid-column: 3 / 4;
+        display: flex;
+        align-items: center;
+        gap: 9px;
+
+        @include vp-1023 {
+            display: none;
+        }
+
+        &-icon {
+            width: 16px;
+            height: 16px;
+        }
+
+        &-input {
+            width: 72px;
             height: 6px;
         }
     }
