@@ -840,6 +840,14 @@ button {
 }
 .table__option {
   padding: 5px;
+  transition: color 0.3s linear;
+  color: #AAAAAA;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+.table__option:hover {
+  color: #000000;
 }
 .table__date-text, .table__time {
   color: #AAAAAA;
@@ -859,6 +867,7 @@ button {
   display: flex;
   align-items: center;
   gap: 23px;
+  position: relative;
 }
 
 .pleer {
@@ -957,6 +966,10 @@ button {
     gap: 0;
   }
 }
+.pleer__svgs {
+  width: 24px;
+  height: 24px;
+}
 .pleer__buttons {
   display: flex;
   gap: 20px;
@@ -965,6 +978,8 @@ button {
   background-color: transparent;
   border: none;
   padding: 0;
+  color: #AAAAAA;
+  transition: color 0.3s linear;
 }
 @media (max-width: 1023px) {
   .pleer__buttons-shufle, .pleer__buttons-back, .pleer__buttons-forward, .pleer__buttons-repeat {
@@ -983,6 +998,15 @@ button {
   .pleer__buttons-play {
     display: none;
   }
+}
+.pleer__buttons-shufle:hover, .pleer__buttons-back:hover, .pleer__buttons-forward:hover, .pleer__buttons-repeat:hover {
+  color: #5e5e5e;
+}
+.pleer__buttons-play {
+  transition: background-color 0.3s linear;
+}
+.pleer__buttons-play:hover {
+  background-color: #5e5e5e;
 }
 .pleer__bottom {
   display: flex;
@@ -1089,4 +1113,25 @@ button {
 }
 .form-enter__button:hover {
   background-color: rgb(197, 118, 0);
+}
+
+.option-card {
+  opacity: 0;
+  transition: opacity 0.3s linear;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: absolute;
+  top: 20px;
+  left: 35px;
+}
+.option-card--active {
+  opacity: 1;
+}
+.option-card__button {
+  background-color: red;
+  color: #ffffff;
+  border: none;
+  padding: 5px;
+  border-radius: 8px;
 }/*# sourceMappingURL=style.css.map */

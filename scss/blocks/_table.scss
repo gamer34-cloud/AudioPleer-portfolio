@@ -246,6 +246,15 @@
 
     &__option {
         padding: 5px;
+        transition: color 0.3s linear;
+        color: #AAAAAA;
+        display: flex;
+        justify-content: center;
+        position: relative;
+
+        &:hover {
+            color: $color-black;
+        }
     }
 
     &__date-text,
@@ -268,5 +277,6 @@
         display: flex;
         align-items: center;
         gap: 23px;
+        position: relative;
     }
 }

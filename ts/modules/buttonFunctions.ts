@@ -69,3 +69,17 @@ export function modalWindowButton(): void {
     main?.append(overlay, wrapper);
   });
 }
+
+export function buttonOption(): void {
+  const buttonEl: HTMLButtonElement[] = document.querySelectorAll(
+    ".table__option"
+  ) as unknown as HTMLButtonElement[];
+
+  const optionCardEl: HTMLDivElement[] = document.querySelectorAll('.option-card') as unknown as HTMLDivElement[];
+
+  buttonEl.forEach((elem, index) => {
+    elem.addEventListener("click", function (e) {
+      optionCardEl[index].classList.toggle('option-card--active');
+    });
+  });
+}

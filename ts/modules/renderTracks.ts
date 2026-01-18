@@ -3,6 +3,7 @@ import init from "./userNameInit";
 
 export default async function render(containerEl: HTMLElement): Promise<void> {
   const token: string = localStorage.getItem("autarisation-token") as string;
+  containerEl.innerHTML = ''
 
   const response = await fetch("http://localhost:8000/api/tracks", {
     headers: {
@@ -18,7 +19,7 @@ export default async function render(containerEl: HTMLElement): Promise<void> {
     duration: number;
   }
   const tracks: track[] = await response.json();
-  console.log(tracks);
+
   let counter: number = 0;
   const table = el("table", { id: "table" }, [
     tracks.map((elem) => {
@@ -35,13 +36,15 @@ export default async function render(containerEl: HTMLElement): Promise<void> {
                   src: "./images/img-oblojca.jpg",
                   alt: "Обложка группы Нирваны",
                 }),
-                svg("svg", {
-                  class: "table__artist-svg",
-                  src: "./images/img-oblojca.jpg",
-                  alt: "Обложка группы Нирваны",
-                }, [
-                  svg("use", {href: "./images/sprite.svg#icon-play-button"})
-                ]),
+                svg(
+                  "svg",
+                  {
+                    class: "table__artist-svg",
+                    src: "./images/img-oblojca.jpg",
+                    alt: "Обложка группы Нирваны",
+                  },
+                  [svg("use", { href: "./images/sprite.svg#icon-play-button" })]
+                ),
               ]),
               el("div", { class: "table__artist-content" }, [
                 el("span", { class: "table__artist-album" }, elem.title),
@@ -79,6 +82,9 @@ export default async function render(containerEl: HTMLElement): Promise<void> {
 
           el("td", [
             el("div", { class: "table__last" }, [
+              el("div", { class: "option-card" }, [
+                el("button", { class: "option-card__button" }, "Удалить"),
+              ]),
               el("span", { class: "table__time" }, elem.duration),
               el(
                 "button",

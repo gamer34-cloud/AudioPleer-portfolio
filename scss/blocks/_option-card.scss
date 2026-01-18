@@ -1,0 +1,22 @@
+.option-card {
+    opacity: 0;
+    transition: opacity 0.3s linear;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: absolute;
+    top: 20px;
+    left: 35px;
+
+    &--active {
+        opacity: 1;
+    }
+
+    &__button {
+        background-color: red;
+        color: $color-white;
+        border: none;
+        padding: 5px;
+        border-radius: 8px;
+    }
+}
