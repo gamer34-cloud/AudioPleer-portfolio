@@ -1,32 +1,31 @@
 import { el, setChildren, svg } from "redom";
 import init from "./userNameInit";
+import {
+  buttonLike,
+  modalWindowButton,
+  buttonOption,
+} from "./buttonFunctions.ts";
 
-export default async function render(containerEl: HTMLElement): Promise<void> {
-  const token: string = localStorage.getItem("autarisation-token") as string;
-  containerEl.innerHTML = ''
+interface track {
+  id: string;
+  title: string;
+  artist: string;
+  duration: number;
+}
 
-  const response = await fetch("http://localhost:8000/api/tracks", {
-    headers: {
-      Authorization: `${token}`,
-    },
-  });
-  //   const status: Object = response as Object;
-
-  interface track {
-    id: string;
-    title: string;
-    artist: string;
-    duration: number;
-  }
-  const tracks: track[] = await response.json();
+export default async function render(
+  containerEl: HTMLElement,
+  tracks: track[],
+): Promise<void> {
+  containerEl.innerHTML = "";
 
   let counter: number = 0;
   const table = el("table", { id: "table" }, [
-    tracks.map((elem) => {
+    tracks.map((elem, index) => {
       counter++;
       if (counter <= 6) {
         return el("tr", [
-          el("td", elem.id),
+          el("td", index + 1),
 
           el("td", [
             el("div", { class: "table__artist" }, [
@@ -43,7 +42,11 @@ export default async function render(containerEl: HTMLElement): Promise<void> {
                     src: "./images/img-oblojca.jpg",
                     alt: "Обложка группы Нирваны",
                   },
-                  [svg("use", { href: "./images/sprite.svg#icon-play-button" })]
+                  [
+                    svg("use", {
+                      href: "./images/sprite.svg#icon-play-button",
+                    }),
+                  ],
                 ),
               ]),
               el("div", { class: "table__artist-content" }, [
@@ -60,7 +63,7 @@ export default async function render(containerEl: HTMLElement): Promise<void> {
               el(
                 "span",
                 { class: "table__date-text" },
-                `${elem.id} дней назад`
+                `${elem.id} дней назад`,
               ),
 
               el(
@@ -75,7 +78,7 @@ export default async function render(containerEl: HTMLElement): Promise<void> {
                   svg("svg", { class: "table__icon" }, [
                     svg("use", { href: "/images/sprite.svg#icon-like" }),
                   ]),
-                ]
+                ],
               ),
             ]),
           ]),
@@ -99,9 +102,9 @@ export default async function render(containerEl: HTMLElement): Promise<void> {
                       class: ["table__icon--option"],
                       xmlns: "http://www.w3.org/2000/svg",
                     },
-                    [svg("use", { href: "/images/sprite.svg#icon-option" })]
+                    [svg("use", { href: "/images/sprite.svg#icon-option" })],
                   ),
-                ]
+                ],
               ),
             ]),
           ]),
@@ -111,5 +114,8 @@ export default async function render(containerEl: HTMLElement): Promise<void> {
   ]);
 
   setChildren(containerEl, [table]);
+  setTimeout(() => buttonLike(), 50);
+  modalWindowButton();
+  setTimeout(() => buttonOption(), 50);
   init();
 }

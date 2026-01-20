@@ -1,35 +1,42 @@
 import { el, setChildren } from "redom";
 
+import { getTracks } from "../server/getData.ts";
+
+import { postFavorites } from "../server/postData.ts";
+
+import { deleteFavorites } from "../server/deleteData.ts";
+
 export function buttonLike(): void {
   const buttonEl: HTMLButtonElement[] = document.querySelectorAll(
-    ".like"
+    ".like",
   ) as unknown as HTMLButtonElement[];
-
-  buttonEl.forEach((elem) => {
+  interface track {
+    id: string;
+    title: string;
+    artist: string;
+    duration: number;
+    encoded_audio: string;
+  }
+  const tracks: Promise<track[]> = getTracks() as unknown as Promise<track[]>;
+  buttonEl.forEach((elem, index) => {
     elem.addEventListener("click", function (e) {
       elem.classList.toggle("liked");
-    });
-  });
-}
-
-export function buttonAside(): void {
-  const buttonEl: HTMLButtonElement[] = document.querySelectorAll(
-    ".aside__button"
-  ) as unknown as HTMLButtonElement[];
-
-  buttonEl.forEach((elem) => {
-    elem.addEventListener("click", function (e) {
-      for (let i = 0; i < buttonEl.length; i++) {
-        buttonEl[i].classList.remove("is-active");
+      if (elem.classList.contains("liked")) {
+        tracks.then((res) => {
+          postFavorites(res[index].id);
+        });
+      } else {
+        tracks.then((res) => {
+          deleteFavorites(res[index].id);
+        });
       }
-      elem.classList.toggle("is-active");
     });
   });
 }
 
 export function modalWindowButton(): void {
   const buttonEl: HTMLButtonElement = document.querySelector(
-    ".hero__header-button"
+    ".hero__header-button",
   ) as HTMLButtonElement;
 
   buttonEl.addEventListener("click", function (e) {
@@ -42,13 +49,13 @@ export function modalWindowButton(): void {
           ariaLabel: "Кнопка закрытия модального окна",
           onclick: modalWindowClose,
         },
-        "Закрыть"
+        "Закрыть",
       ),
       el("div", { class: "modal-window__buttons" }, [
         el(
           "a",
           { class: "modal-window__button", href: "./enter.html" },
-          "Войти"
+          "Войти",
         ),
         el(
           "a",
@@ -56,7 +63,7 @@ export function modalWindowButton(): void {
             class: "modal-window__button-sign",
             href: "./registration.html",
           },
-          "Зарегестрироваться"
+          "Зарегестрироваться",
         ),
       ]),
     ]);
@@ -72,14 +79,16 @@ export function modalWindowButton(): void {
 
 export function buttonOption(): void {
   const buttonEl: HTMLButtonElement[] = document.querySelectorAll(
-    ".table__option"
+    ".table__option",
   ) as unknown as HTMLButtonElement[];
 
-  const optionCardEl: HTMLDivElement[] = document.querySelectorAll('.option-card') as unknown as HTMLDivElement[];
+  const optionCardEl: HTMLDivElement[] = document.querySelectorAll(
+    ".option-card",
+  ) as unknown as HTMLDivElement[];
 
   buttonEl.forEach((elem, index) => {
     elem.addEventListener("click", function (e) {
-      optionCardEl[index].classList.toggle('option-card--active');
+      optionCardEl[index].classList.toggle("option-card--active");
     });
   });
 }

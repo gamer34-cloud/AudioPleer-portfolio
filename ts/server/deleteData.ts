@@ -1,18 +1,10 @@
- interface track {
-    id: string;
-    title: string;
-    artist: string;
-    duration: number;
-    encoded_audio: string;
-  }
-
-export async function postFavorites(data: string) {
+export async function deleteFavorites(data: string) {
   const token = localStorage.getItem("autarisation-token");
 
   console.log(token)
 
   const response = await fetch("http://localhost:8000/api/favorites", {
-    method: "POST",
+    method: "DELETE",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,

@@ -1,8 +1,7 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
-
-const secretKey = "your_secret_key";
+const { JWT_SECRET } = require("../config/jwt");
 
 const register = (req, res) => {
   const { username, password } = req.body;
@@ -30,7 +29,11 @@ const login = (req, res) => {
       .json({ message: "произошла ошибка при авторизации - неверные данные" });
   }
 
-  const token = jwt.sign({ username }, secretKey, { expiresIn: "1h" });
+  const token = jwt.sign(
+  { username: user.username },
+  JWT_SECRET,
+  { expiresIn: "1h" }
+);
   return res.json({ message: "авторизация прошла успешно", token });
 };
 
