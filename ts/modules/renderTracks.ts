@@ -13,11 +13,21 @@ interface track {
   duration: number;
 }
 
+interface field {
+  text: string;
+  index: number;
+}
+
 export default async function render(
   containerEl: HTMLElement,
   tracks: track[],
+  parasm: field,
 ): Promise<void> {
   containerEl.innerHTML = "";
+
+  if (parasm.text != undefined && parasm.text != null && parasm.text != '') {
+    tracks = tracks.filter((a: track) => a.title.slice(0, parasm.index) == parasm.text);
+  }
 
   let counter: number = 0;
   const table = el("table", { id: "table" }, [
@@ -118,4 +128,7 @@ export default async function render(
   modalWindowButton();
   setTimeout(() => buttonOption(), 50);
   init();
+}
+function a(value: track, index: number, array: track[]): value is track {
+  throw new Error("Function not implemented.");
 }

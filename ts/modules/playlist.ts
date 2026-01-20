@@ -35,13 +35,13 @@ export function playListSelect(containerEL: HTMLElement) {
       if (buttonMain[1].classList.contains("is-active")) {
 
         getTracks().then((res: track[]) => {
-          render(containerEL, res);
+          render(containerEL, res, '');
         });
 
       } else if (buttonMain[0].classList.contains("is-active")) {
 
         getFavoriteTracks().then((res) => {
-          render(containerEL, res);
+          render(containerEL, res, '');
         });
 
       }
@@ -50,6 +50,6 @@ export function playListSelect(containerEL: HTMLElement) {
   });
 
   getTracks().then((res: track[]) => {
-    render(containerEL, res);
+    render(containerEL, res, '');
   });
 }

@@ -1114,6 +1114,25 @@ button {
 .form-enter__button:hover {
   background-color: rgb(197, 118, 0);
 }
+.form-enter__error {
+  background-color: red;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 0 0 20px;
+  opacity: 0;
+  transition: opacity 0.3s linear;
+  display: none;
+}
+.form-enter__error--active {
+  display: flex;
+  opacity: 1;
+}
+.form-enter__error-span {
+  color: white;
+  margin: 0;
+  font-size: 19px;
+  font-weight: 500;
+}
 
 .option-card {
   opacity: 0;

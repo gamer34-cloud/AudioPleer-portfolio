@@ -28,4 +28,26 @@
             background-color: rgb(197, 118, 0);
         }
     }
+
+    &__error {
+        background-color: red;
+        padding: 10px;
+        border-radius: 10px;
+        margin: 0 0 20px;
+        opacity: 0;
+        transition: opacity 0.3s linear;
+        display: none;
+
+        &--active {
+            display: flex;
+            opacity: 1;
+        }
+
+        &-span {
+            color: white;
+            margin: 0;
+            font-size: 19px;
+            font-weight: 500;
+        }
+    }
 }
