@@ -12,7 +12,7 @@
     <main class="main">
         <aside class="aside">
             <div class="aside__logo">
-                <a class="aside__link" href="index.html">
+                <a class="aside__link" href="index.html" aria-label="Ссылка на главную страницу">
                     <svg class="aside__svg" xmlns="http://www.w3.org/2000/svg">
                         <use xlink:href="./images/sprite.svg#icon-logo"></use>
                     </svg>
@@ -77,8 +77,11 @@
                     <button class="table__mobale-button table__mobale-button--favorite">Избранное</button>
                 </div>
                 <h2 class="table__title">Аудифайлы и треки</h2>
-                <table id="table">
-                </table>
+                <div id="tracks">
+                </div>
+                <div class="pagination">
+                    <ul class="pagination__list"></ul>
+                </div>
             </section>
         </div>
         <section class="pleer">
@@ -103,28 +106,32 @@
             </div>
             <div class="pleer__interface">
                 <div class="pleer__buttons">
-                    <button class="pleer__buttons-shufle">
+                    <button class="pleer__buttons-shufle" arai-label="Кнопка для перемешивания треков">
                         <svg class="pleer__svgs" xmlns="http://www.w3.org/2000/svg">
                             <use href="./images/sprite.svg#icon-shufle"></use>
                         </svg>
                     </button>
-                    <button class="pleer__buttons-back">
+                    <button class="pleer__buttons-back" arai-label="Кнопка для перехода к прошлой песни">
                         <svg class="pleer__svgs" xmlns="http://www.w3.org/2000/svg">
                             <use href="./images/sprite.svg#icon-back"></use>
                         </svg>
                     </button>
-                    <button class="pleer__buttons-play">
-                        <svg class="pleer__svgs" xmlns="http://www.w3.org/2000/svg">
+                    <button class="pleer__buttons-play" aria-label="Кнопка для начала песни">
+                        <svg class="pleer__svgs" xmlns="http://www.w3.org/2000/svg" id="play">
                             <use href="./images/sprite.svg#icon-play"></use>
                         </svg>
+                        <svg class="pleer__svgs" xmlns="http://www.w3.org/2000/svg" id="pause">
+                            <use href="./images/sprite.svg#icon-pause"></use>
+                        </svg>
                     </button>
-                    <button class="pleer__buttons-forward">
+                    <button class="pleer__buttons-forward" arai-label="Кнопка для перехода к следующей песни">
                         <svg class="pleer__svgs" xmlns="http://www.w3.org/2000/svg">
                             <use href="./images/sprite.svg#icon-forward"></use>
                         </svg>
                     </button>
                     <button class="pleer__buttons-repeat">
-                        <svg class="pleer__svgs" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="pleer__svgs" xmlns="http://www.w3.org/2000/svg"
+                            arai-label="Кнопка для включения текущей песни">
                             <use href="./images/sprite.svg#icon-repeat"></use>
                         </svg>
                     </button>
@@ -132,7 +139,7 @@
                 <div class="pleer__bottom">
                     <span class="pleer__bottom-start">0:26</span>
                     <form action="#" class="pleer__bottom-form">
-                        <input class="pleer__bottom-scroll" type="range">
+                        <input class="pleer__bottom-scroll" type="range" id="scroll">
                     </form>
                     <span class="pleer__bottom-end">6:55</span>
                 </div>
@@ -142,7 +149,7 @@
                     <use href="./images/sprite.svg#icon-volume"></use>
                 </svg>
                 <form action="#" class="pleer__sound-form">
-                    <input class="pleer__sound-input" type="range">
+                    <input class="pleer__sound-input" type="range" id="range" min="0" max="100" value="50">
                 </form>
             </div>
         </section>

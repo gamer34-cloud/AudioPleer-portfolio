@@ -31,7 +31,5 @@ export async function getFavoriteTracks(): Promise<track[]> {
 
   const tracks: track[] = await response.json();
 
-  console.log(tracks)
-
   return tracks;
 }

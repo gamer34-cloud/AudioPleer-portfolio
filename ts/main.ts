@@ -1,15 +1,16 @@
-
 import { playListSelect } from "./modules/playlist.ts";
 
-import { selectTrackButton } from "./modules/audio.ts";
+import { selectTrackButton, buttonTrackChange } from "./modules/audio.ts";
 
 import { inputSearch } from "./modules/search.ts";
 
 window.onload = function (): void {
   let containerEl: HTMLElement = document.getElementById(
-    "table",
+    "tracks",
   ) as HTMLElement;
-  setTimeout(() => selectTrackButton(), 50);
+  setTimeout(() => selectTrackButton(), 1000);
   playListSelect(containerEl);
   inputSearch();
+  buttonTrackChange();
+
 };

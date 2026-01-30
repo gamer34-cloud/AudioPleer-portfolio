@@ -622,7 +622,7 @@ button {
 }
 
 .table {
-  padding: 20px 30px 0 46px;
+  padding: 0 30px 0 46px;
   display: flex;
   flex-direction: column;
 }
@@ -630,6 +630,7 @@ button {
   border-spacing: 0px;
   border-collapse: collapse;
   width: 100%;
+  margin: 0 0 30px;
 }
 @media (max-width: 1023px) {
   .table {
@@ -986,6 +987,9 @@ button {
     display: none;
   }
 }
+.pleer__buttons #pause {
+  display: none;
+}
 .pleer__buttons-play {
   background-color: #AAAAAA;
   border: none;
@@ -994,6 +998,15 @@ button {
   height: 40px;
   padding: 3px 0 0 2px;
 }
+.pleer__buttons-play--active {
+  padding: 0 0 0 7px;
+}
+.pleer__buttons-play--active #play {
+  display: none;
+}
+.pleer__buttons-play--active #pause {
+  display: flex;
+}
 @media (max-width: 1023px) {
   .pleer__buttons-play {
     display: none;
@@ -1001,6 +1014,9 @@ button {
 }
 .pleer__buttons-shufle:hover, .pleer__buttons-back:hover, .pleer__buttons-forward:hover, .pleer__buttons-repeat:hover {
   color: #5e5e5e;
+}
+.pleer__buttons-shufle--active, .pleer__buttons-back--active, .pleer__buttons-forward--active, .pleer__buttons-repeat--active {
+  color: #00ff15;
 }
 .pleer__buttons-play {
   transition: background-color 0.3s linear;
@@ -1102,8 +1118,7 @@ button {
 .form-enter__title {
   margin: 0 0 35px;
 }
-.form-enter__button {
-  background-color: orange;
+.form-enter__submit, .form-enter__return {
   color: white;
   border: none;
   padding: 10px;
@@ -1111,8 +1126,17 @@ button {
   font-size: 20px;
   transition: background-color 0.3s linear;
 }
-.form-enter__button:hover {
+.form-enter__submit {
+  background-color: orange;
+}
+.form-enter__submit:hover {
   background-color: rgb(197, 118, 0);
+}
+.form-enter__return {
+  background-color: rgb(202, 0, 0);
+}
+.form-enter__return:hover {
+  background-color: rgb(110, 0, 0);
 }
 .form-enter__error {
   background-color: red;
@@ -1128,6 +1152,29 @@ button {
   opacity: 1;
 }
 .form-enter__error-span {
+  color: white;
+  margin: 0;
+  font-size: 19px;
+  font-weight: 500;
+}
+.form-enter__buttons {
+  display: flex;
+  gap: 20px;
+}
+.form-enter__succsess {
+  background-color: rgb(62, 187, 0);
+  padding: 10px;
+  border-radius: 10px;
+  margin: 0 0 20px;
+  opacity: 0;
+  transition: opacity 0.3s linear;
+  display: none;
+}
+.form-enter__succsess--active {
+  display: flex;
+  opacity: 1;
+}
+.form-enter__succsess-span {
   color: white;
   margin: 0;
   font-size: 19px;
@@ -1153,4 +1200,37 @@ button {
   border: none;
   padding: 5px;
   border-radius: 8px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pagination__list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  width: 500px;
+  padding: 0;
+  margin: 0;
+  gap: 20px 10px;
+  justify-content: center;
+}
+.pagination__button {
+  font-family: Arial, Helvetica, sans-serif;
+  width: 30px;
+  height: 30px;
+  background-color: rgba(255, 128, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 5px;
+  border-radius: 8px;
+  transition: background-color 0.2s linear;
+}
+.pagination__button--active, .pagination__button:hover {
+  background-color: rgb(255, 128, 0);
+}
+.pagination__button:active {
+  background-color: rgb(181, 92, 3);
 }/*# sourceMappingURL=style.css.map */

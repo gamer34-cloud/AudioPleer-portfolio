@@ -13,6 +13,7 @@
   "dependencies": {
     "just-validate": "^4.3.0",
     "redom": "^4.3.0",
+    "swiper": "^12.1.0",
     "zod": "^4.3.5"
   },
   "devDependencies": {

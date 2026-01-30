@@ -1,4 +1,4 @@
-import { el, setChildren } from "redom";
+import { el } from "redom";
 
 import { getTracks } from "../server/getData.ts";
 
@@ -10,6 +10,7 @@ export function buttonLike(): void {
   const buttonEl: HTMLButtonElement[] = document.querySelectorAll(
     ".like",
   ) as unknown as HTMLButtonElement[];
+
   interface track {
     id: string;
     title: string;
@@ -40,7 +41,10 @@ export function modalWindowButton(): void {
   ) as HTMLButtonElement;
 
   buttonEl.addEventListener("click", function (e) {
-    const overlay = el("div", { class: "overlay" });
+    const overlayEl: HTMLDivElement | undefined | null = document.querySelector('.overlay') as HTMLDivElement;
+    const wrapperEl: HTMLDivElement | undefined | null = document.querySelector('.modal-window') as HTMLDivElement;
+   if(!overlayEl && !wrapperEl) {
+     const overlay = el("div", { class: "overlay" });
     const wrapper = el("div", { class: "modal-window" }, [
       el(
         "button",
@@ -54,7 +58,7 @@ export function modalWindowButton(): void {
       el("div", { class: "modal-window__buttons" }, [
         el(
           "a",
-          { class: "modal-window__button", href: "./enter.html" },
+          { class: "modal-window__button", href: "./authorization.html" },
           "Войти",
         ),
         el(
@@ -74,6 +78,10 @@ export function modalWindowButton(): void {
     }
     const main = document.querySelector(".main");
     main?.append(overlay, wrapper);
+   } else {
+          overlayEl.style.display = "flex";
+      wrapperEl.style.display = "flex";
+   }
   });
 }
 

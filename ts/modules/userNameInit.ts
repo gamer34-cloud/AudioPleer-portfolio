@@ -1,4 +1,4 @@
-export default function init() {
+export default function init(): void {
   const name: string = localStorage.getItem("username") as string;
   const spanEl: HTMLSpanElement = document.querySelector(
     ".hero__header-text"

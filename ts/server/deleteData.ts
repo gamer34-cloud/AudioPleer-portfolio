@@ -1,7 +1,5 @@
-export async function deleteFavorites(data: string) {
+export async function deleteFavorites(data: string): Promise<void> {
   const token = localStorage.getItem("autarisation-token");
-
-  console.log(token)
 
   const response = await fetch("http://localhost:8000/api/favorites", {
     method: "DELETE",
@@ -13,6 +11,4 @@ export async function deleteFavorites(data: string) {
       trackId: data,
     }),
   });
-
-  console.log(await response.json());
 }
