@@ -2,7 +2,7 @@ import { fields, exampleResponse } from "./typesAndInterfeis";
 
 export function authorization() {
   const formEl: HTMLFormElement = document.querySelector(
-    "#form-enter",
+    "#form-authorization",
   ) as HTMLFormElement;
 
   formEl.addEventListener("submit", async (e) => {
@@ -15,10 +15,10 @@ export function authorization() {
     ) as HTMLInputElement;
 
     const errorEl: HTMLDivElement = document.querySelector(
-      ".form-enter__error",
+      ".form-authorization__error",
     ) as HTMLDivElement;
     const errorTextEl: HTMLSpanElement = document.querySelector(
-      ".form-enter__error-span",
+      ".form-authorization__error-span",
     ) as HTMLSpanElement;
 
     const data: fields = {
@@ -50,7 +50,7 @@ export function authorization() {
         throw err;
       }
     } catch (error: any) {
-      errorEl.classList.add('form-enter__error--active')
+      errorEl.classList.add('form-authorization__error--active')
       errorTextEl.textContent = error.message
       console.log(error)
     }

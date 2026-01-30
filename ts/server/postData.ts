@@ -1,11 +1,3 @@
-interface track {
-  id: string;
-  title: string;
-  artist: string;
-  duration: number;
-  encoded_audio: string;
-}
-
 export async function postRegister(data: object): Promise<void> {
   console.log(data);
   const response = await fetch("http://localhost:8000/api/register", {

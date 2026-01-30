@@ -1103,22 +1103,22 @@ button {
   border-radius: 8px;
 }
 
-.form-enter {
+.form-authorization {
   position: absolute;
   top: 35%;
   left: 40%;
 }
-.form-enter__wrapper {
+.form-authorization__wrapper {
   border: none;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 0;
 }
-.form-enter__title {
+.form-authorization__title {
   margin: 0 0 35px;
 }
-.form-enter__submit, .form-enter__return {
+.form-authorization__submit, .form-authorization__return {
   color: white;
   border: none;
   padding: 10px;
@@ -1126,19 +1126,19 @@ button {
   font-size: 20px;
   transition: background-color 0.3s linear;
 }
-.form-enter__submit {
+.form-authorization__submit {
   background-color: orange;
 }
-.form-enter__submit:hover {
+.form-authorization__submit:hover {
   background-color: rgb(197, 118, 0);
 }
-.form-enter__return {
+.form-authorization__return {
   background-color: rgb(202, 0, 0);
 }
-.form-enter__return:hover {
+.form-authorization__return:hover {
   background-color: rgb(110, 0, 0);
 }
-.form-enter__error {
+.form-authorization__error {
   background-color: red;
   padding: 10px;
   border-radius: 10px;
@@ -1147,21 +1147,21 @@ button {
   transition: opacity 0.3s linear;
   display: none;
 }
-.form-enter__error--active {
+.form-authorization__error--active {
   display: flex;
   opacity: 1;
 }
-.form-enter__error-span {
+.form-authorization__error-span {
   color: white;
   margin: 0;
   font-size: 19px;
   font-weight: 500;
 }
-.form-enter__buttons {
+.form-authorization__buttons {
   display: flex;
   gap: 20px;
 }
-.form-enter__succsess {
+.form-authorization__succsess {
   background-color: rgb(62, 187, 0);
   padding: 10px;
   border-radius: 10px;
@@ -1170,11 +1170,11 @@ button {
   transition: opacity 0.3s linear;
   display: none;
 }
-.form-enter__succsess--active {
+.form-authorization__succsess--active {
   display: flex;
   opacity: 1;
 }
-.form-enter__succsess-span {
+.form-authorization__succsess-span {
   color: white;
   margin: 0;
   font-size: 19px;

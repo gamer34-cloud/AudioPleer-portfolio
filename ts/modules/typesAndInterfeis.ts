@@ -28,3 +28,10 @@ export interface exampleResponse {
   message: string;
   token: string;
 }
+
+export type song = {
+  id: string | number;
+  title: string;
+  description: string;
+  duration: string;
+};

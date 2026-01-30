@@ -1,10 +1,4 @@
-  interface track {
-    id: string;
-    title: string;
-    artist: string;
-    duration: number;
-    encoded_audio: string;
-  }
+import { track } from "../modules/typesAndInterfeis";
 
 export async function getTracks(): Promise<track[]> {
   const token: string = localStorage.getItem("autarisation-token") as string;

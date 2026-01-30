@@ -1,5 +1,6 @@
 import { getTracks } from "../server/getData";
 import { getRandomInt } from "./usefullFunctions";
+import { song } from "./typesAndInterfeis";
 
 let audio: HTMLAudioElement = new Audio();
 let counter = 0;
@@ -10,13 +11,6 @@ const buttonShufleEl: HTMLButtonElement = document.querySelector(
 const buttonPlayAndPauseEl: HTMLButtonElement = document.querySelector(
   ".pleer__buttons-play",
 ) as HTMLButtonElement;
-
-type song = {
-  id: string | number;
-  title: string;
-  description: string;
-  duration: string;
-};
 
 startPleer();
 

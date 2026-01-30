@@ -5,7 +5,7 @@ import { fields, zodState } from "./typesAndInterfeis";
 
 export function registertration() {
   const formEl: HTMLFormElement = document.querySelector(
-    "#form-enter",
+    "#form-authorization",
   ) as HTMLFormElement;
 
   formEl.addEventListener("submit", async (e) => {
@@ -18,14 +18,14 @@ export function registertration() {
     ) as HTMLInputElement;
 
     const errorEl: HTMLDivElement = document.querySelector(
-      ".form-enter__error",
+      ".form-authorization__error",
     ) as HTMLDivElement;
     const errorTextEl: HTMLSpanElement = document.querySelector(
-      ".form-enter__error-span",
+      ".form-authorization__error-span",
     ) as HTMLSpanElement;
 
     const succssesEl: HTMLDivElement = document.querySelector(
-      ".form-enter__succsess",
+      ".form-authorization__succsess",
     ) as HTMLDivElement;
 
     const userSchema = z.object({
@@ -42,15 +42,15 @@ export function registertration() {
 
     if (result.success) {
       postRegister(data).then((res) => {
-        errorEl.classList.remove("form-enter__error--active");
-        succssesEl.classList.add("form-enter__succsess--active");
-        // window.location.replace("./index.html");
+        errorEl.classList.remove("form-authorization__error--active");
+        succssesEl.classList.add("form-authorization__succsess--active");
+        window.location.replace("./index.html");
       });
     } else {
-      succssesEl.classList.remove("form-enter__succsess--active");
+      succssesEl.classList.remove("form-authorization__succsess--active");
 
       const res: zodState = JSON.parse(result.error.message)[0] as zodState;
-      errorEl.classList.add("form-enter__error--active");
+      errorEl.classList.add("form-authorization__error--active");
       errorTextEl.textContent = res.message;
     }
   });
