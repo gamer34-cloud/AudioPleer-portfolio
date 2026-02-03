@@ -14,6 +14,29 @@ export async function getTracks(): Promise<track[]> {
   return tracks;
 }
 
+export async function checkUser(): Promise<void> {
+  const token: string = localStorage.getItem("autarisation-token") as string || '';
+
+try {
+    const response = await fetch("http://localhost:8000/api/favorites", {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  if(!response.status) {
+    const err = new Error('Account not found!')
+    err.name = 'accountError'
+    throw err
+  }
+} catch(error: unknown) {
+    if(error instanceof Error) {
+      localStorage.removeItem('username')
+      localStorage.removeItem('autarisation-token')
+      localStorage.removeItem('last-song')
+    }
+}
+}
+
 export async function getFavoriteTracks(): Promise<track[]> {
   const token: string = localStorage.getItem("autarisation-token") as string;
 

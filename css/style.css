@@ -630,7 +630,6 @@ button {
   border-spacing: 0px;
   border-collapse: collapse;
   width: 100%;
-  margin: 0 0 30px;
 }
 @media (max-width: 1023px) {
   .table {
@@ -737,6 +736,7 @@ button {
     display: flex;
     gap: 10px;
     align-items: center;
+    margin: 0 0 20px;
   }
 }
 .table__mobale-button {
@@ -1190,16 +1190,24 @@ button {
   position: absolute;
   top: 20px;
   left: 35px;
+  border-radius: 8px;
+  background-color: rgb(38, 38, 38);
+}
+@media (max-width: 767px) {
+  .option-card {
+    top: 10px;
+    left: -40px;
+  }
 }
 .option-card--active {
   opacity: 1;
 }
-.option-card__button {
-  background-color: red;
+.option-card__text {
   color: #ffffff;
   border: none;
   padding: 5px;
   border-radius: 8px;
+  font-size: 13px;
 }
 
 .pagination {
@@ -1233,4 +1241,16 @@ button {
 }
 .pagination__button:active {
   background-color: rgb(181, 92, 3);
+}
+
+.error {
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+  border-radius: 8px;
+  background-color: orange;
+}
+.error__title {
+  color: white;
+  margin: 0;
 }/*# sourceMappingURL=style.css.map */

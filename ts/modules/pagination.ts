@@ -1,12 +1,18 @@
 import { getTracks, getFavoriteTracks } from "../server/getData.ts";
 import { el } from "redom";
 import { render } from "./renderTracks.ts";
-import { field } from "./typesAndInterfeis.ts";
+import { field, track } from "./typesAndInterfeis.ts";
+
+const stub: field = {
+  text: "",
+  index: 0,
+};
 
 export function pagination(
   start: number = 0,
   end: number = 6,
   playlist: "fav" | "base",
+  search = stub,
 ): void {
   let counter: number = 0;
   let numberForButtons: number = 0;
@@ -14,24 +20,30 @@ export function pagination(
   const containerEl: HTMLElement = document.getElementById(
     "tracks",
   ) as HTMLElement;
+  const paginationEl: HTMLDivElement = document.querySelector(
+    ".pagination",
+  ) as HTMLDivElement;
+  containerEl.innerHTML = "";
+  paginationEl.innerHTML = "<ul class='pagination__list'></ul>";
+
   const ulEl: HTMLUListElement = document.querySelector(
     ".pagination__list",
   ) as HTMLUListElement;
-  containerEl.innerHTML = "";
-  ulEl.innerHTML = "";
-
-  const stub: field = {
-    text: "",
-    index: 0,
-  };
 
   if (playlist != "fav") {
     getTracks().then((tracks) => {
-
+      if (
+        search.text != undefined &&
+        search.text != null &&
+        search.text != ""
+      ) {
+        tracks = tracks.filter(
+          (a: track) => a.title.slice(0, search.index) == search.text,
+        );
+      }
       const newTracks = tracks.slice(start, end);
 
       tracks.forEach((elem, index) => {
-
         counter++;
         if (counter == 6 || index == 0) {
           counter = 0;
@@ -42,14 +54,22 @@ export function pagination(
         }
       });
 
-      render(containerEl, newTracks, stub);
+      render(containerEl, newTracks, playlist);
       paginationButtons(playlist);
     });
   } else {
-//Отрисовка лайкнутых треков
+    //Отрисовка лайкнутых треков
 
     getFavoriteTracks().then((tracks) => {
-
+      if (
+        search.text != undefined &&
+        search.text != null &&
+        search.text != ""
+      ) {
+        tracks = tracks.filter(
+          (a: track) => a.title.slice(0, search.index) == search.text,
+        );
+      }
       const newTracks = tracks.slice(start, end);
 
       tracks.forEach((elem, index) => {
@@ -63,7 +83,7 @@ export function pagination(
         }
       });
 
-      render(containerEl, newTracks, stub);
+      render(containerEl, newTracks, playlist);
       paginationButtons(playlist);
     });
   }

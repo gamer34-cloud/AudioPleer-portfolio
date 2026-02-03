@@ -1,6 +1,7 @@
 import { getTracks } from "../server/getData";
 import { getRandomInt } from "./usefullFunctions";
 import { song } from "./typesAndInterfeis";
+import { locales } from "zod/v4/core";
 
 let audio: HTMLAudioElement = new Audio();
 let counter = 0;
@@ -11,6 +12,22 @@ const buttonShufleEl: HTMLButtonElement = document.querySelector(
 const buttonPlayAndPauseEl: HTMLButtonElement = document.querySelector(
   ".pleer__buttons-play",
 ) as HTMLButtonElement;
+
+  const pleerTextEndEl: HTMLSpanElement = document.querySelector(
+    ".pleer__bottom-end",
+  ) as HTMLSpanElement;
+
+  const titlePleerEl: HTMLSpanElement = document.querySelector(
+    ".pleer__artist-song",
+  ) as HTMLSpanElement;
+
+  const descriptionPleerEl: HTMLSpanElement = document.querySelector(
+    ".pleer__artist-name",
+  ) as HTMLSpanElement;
+
+  const durationPleerEL: HTMLSpanElement = document.querySelector(
+    ".pleer__bottom-end",
+  ) as HTMLSpanElement;
 
 startPleer();
 
@@ -63,21 +80,7 @@ function base64ToAudio(base64: string): HTMLAudioElement {
 }
 
 export function audioPlay(id: number) {
-  const pleerTextEndEl: HTMLSpanElement = document.querySelector(
-    ".pleer__bottom-end",
-  ) as HTMLSpanElement;
 
-  const titlePleerEl: HTMLSpanElement = document.querySelector(
-    ".pleer__artist-song",
-  ) as HTMLSpanElement;
-
-  const descriptionPleerEl: HTMLSpanElement = document.querySelector(
-    ".pleer__artist-name",
-  ) as HTMLSpanElement;
-
-  const durationPleerEL: HTMLSpanElement = document.querySelector(
-    ".pleer__bottom-end",
-  ) as HTMLSpanElement;
 
   counter = id;
 
@@ -144,7 +147,7 @@ export function buttonTrackChange() {
       audioPlay(randomNumber);
     }
     counter++;
-    console.log(counter);
+
     audioPlay(counter);
   });
 }
@@ -191,8 +194,15 @@ function playAndPause() {
       audio.pause();
       buttonPlayAndPauseEl.classList.remove("pleer__buttons-play--active");
     } else {
-      audio.play();
-      buttonPlayAndPauseEl.classList.add("pleer__buttons-play--active");
+      if (audio.src != undefined && audio.src != "" && audio.src != null) {
+        audio.play();
+        buttonPlayAndPauseEl.classList.add("pleer__buttons-play--active");
+      } else {
+        const data: song = JSON.parse(localStorage.getItem("last-song") as string) as unknown as song;
+        const id = Number(data.id);
+        
+        audioPlay(id - 1);
+      }
     }
   });
 }

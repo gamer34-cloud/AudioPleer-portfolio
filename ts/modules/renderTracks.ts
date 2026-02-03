@@ -5,20 +5,14 @@ import {
   modalWindowButton,
   buttonOption,
 } from "./buttonFunctions.ts";
-import { field, track } from "./typesAndInterfeis.ts";
+import { track } from "./typesAndInterfeis.ts";
 
 export async function render(
   containerEl: HTMLElement,
   tracks: track[],
-  parasm: field,
+  playlist: "fav" | "base",
 ): Promise<void> {
   containerEl.innerHTML = "";
-
-  if (parasm.text != undefined && parasm.text != null && parasm.text != "") {
-    tracks = tracks.filter(
-      (a: track) => a.title.slice(0, parasm.index) == parasm.text,
-    );
-  }
 
   let counter: number = 0;
   const table = el("table", { id: "table" }, [
@@ -67,9 +61,10 @@ export async function render(
               "button",
               {
                 className: ["table__date-like"],
-                class: ["like"],
+                class: [`like`],
                 ariaLabel: "Кнопка добавить в избранное",
                 type: "button",
+                id: `like-${Number(elem.id)}`,
               },
               [
                 svg("svg", { class: "table__icon" }, [
@@ -83,7 +78,11 @@ export async function render(
         el("td", [
           el("div", { class: "table__last" }, [
             el("div", { class: "option-card" }, [
-              el("button", { class: "option-card__button" }, "Удалить"),
+              el(
+                "span",
+                { class: "option-card__text" },
+                "Интересная инфомация о треке из бэка",
+              ),
             ]),
             el("span", { class: "table__time" }, elem.duration),
             el(
@@ -109,10 +108,18 @@ export async function render(
     }),
   ]);
 
-//ВЫЗОВЫ ВСПОМОГАТЕЛЬНЫХ ФУНКЦИЙ СПЕЦИАЛЬНО ПОСЛЕ РЕНДЕРА
+  //ВЫЗОВЫ ВСПОМОГАТЕЛЬНЫХ ФУНКЦИЙ СПЕЦИАЛЬНО ПОСЛЕ РЕНДЕРА
   setChildren(containerEl, [table]);
   init();
   setTimeout(() => buttonLike(), 50);
   modalWindowButton();
   setTimeout(() => buttonOption(), 50);
+  if (playlist == "fav") {
+    const buttonLikeEl =
+      document.querySelectorAll<HTMLButtonElement>(".table__date-like");
+
+    buttonLikeEl.forEach((element) => {
+      element.classList.add('liked')
+    });
+  }
 }

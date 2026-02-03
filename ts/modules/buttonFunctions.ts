@@ -6,26 +6,36 @@ import { postFavorites } from "../server/postData.ts";
 
 import { deleteFavorites } from "../server/deleteData.ts";
 
-import { track } from "./typesAndInterfeis.ts";
-
 export function buttonLike(): void {
   const buttonEl: HTMLButtonElement[] = document.querySelectorAll(
     ".like",
   ) as unknown as HTMLButtonElement[];
 
-  const tracks: Promise<track[]> = getTracks() as unknown as Promise<track[]>;
-  buttonEl.forEach((elem, index) => {
-    elem.addEventListener("click", function (e) {
-      elem.classList.toggle("liked");
-      if (elem.classList.contains("liked")) {
-        tracks.then((res) => {
-          postFavorites(res[index].id);
-        });
-      } else {
-        tracks.then((res) => {
-          deleteFavorites(res[index].id);
-        });
-      }
+  getTracks().then((res) => {
+    buttonEl.forEach((elem) => {
+      elem.addEventListener("click", function (e) {
+        const username = localStorage.getItem("username") || null;
+        if (username != null) {
+          elem.classList.toggle("liked");
+
+          let middleId = elem.id.split("");
+          middleId = middleId
+            .map((str) => parseInt(str))
+            .filter((num) => !isNaN(num)) as unknown as string[];
+          middleId = middleId.join("") as unknown as string[];
+
+          const normalId = Number(middleId) - 1;
+
+          if (elem.classList.contains("liked")) {
+            postFavorites(res[normalId as unknown as number].id);
+          } else {
+            deleteFavorites(res[normalId as unknown as number].id);
+          }
+
+        } else {
+          
+        }
+      });
     });
   });
 }

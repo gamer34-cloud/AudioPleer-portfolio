@@ -9,6 +9,7 @@ export interface fields {
 }
 
 export interface track {
+  encoded_audio: string;
   id: string;
   title: string;
   artist: string;
@@ -34,4 +35,11 @@ export type song = {
   title: string;
   description: string;
   duration: string;
+};
+
+export type error = {
+  cause?: unknown;
+  message: string;
+  name: string;
+  stack?: unknown;
 };

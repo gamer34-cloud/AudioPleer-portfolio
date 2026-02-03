@@ -49,10 +49,11 @@ export function authorization() {
         err.name = "errorSignUp";
         throw err;
       }
-    } catch (error: any) {
-      errorEl.classList.add('form-authorization__error--active')
+    } catch (error: unknown) {
+      if(error instanceof Error) {
+        errorEl.classList.add('form-authorization__error--active')
       errorTextEl.textContent = error.message
-      console.log(error)
+      }
     }
   });
 }

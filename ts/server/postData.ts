@@ -1,5 +1,4 @@
 export async function postRegister(data: object): Promise<void> {
-  console.log(data);
   const response = await fetch("http://localhost:8000/api/register", {
     method: "POST",
     headers: {
@@ -7,8 +6,6 @@ export async function postRegister(data: object): Promise<void> {
     },
     body: JSON.stringify(data),
   });
-
-  console.log(response);
 }
 
 export async function postFavorites(data: string): Promise<void> {
@@ -24,5 +21,4 @@ export async function postFavorites(data: string): Promise<void> {
       trackId: data,
     }),
   });
-
 }

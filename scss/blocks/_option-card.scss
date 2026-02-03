@@ -7,16 +7,23 @@
     position: absolute;
     top: 20px;
     left: 35px;
+    border-radius: 8px;
+    background-color: rgb(38, 38, 38);
+
+    @include vp-767 {
+            top: 10px;
+    left: -40px;
+    }
 
     &--active {
         opacity: 1;
     }
 
-    &__button {
-        background-color: red;
+    &__text {
         color: $color-white;
         border: none;
         padding: 5px;
         border-radius: 8px;
+        font-size: 13px;
     }
 }

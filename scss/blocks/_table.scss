@@ -8,7 +8,7 @@
         border-spacing: 0px;
         border-collapse: collapse;
         width: 100%;
-        margin: 0 0 30px;
+
     }
 
     @include vp-1023 {
@@ -120,6 +120,7 @@
             display: flex;
             gap: 10px;
             align-items: center;
+            margin: 0 0 20px;
         }
 
         &-button {
