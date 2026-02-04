@@ -1,0 +1,71 @@
+.account {
+    background-color: white;
+    z-index: 10;
+    padding: 20px;
+    border-radius: 30px;
+    position: absolute;
+    top: 45%;
+    left: 45%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    &__top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 0 10px;
+
+        &-icon {
+            width: 50px;
+            height: 50px;
+            background-color: rgb(157, 157, 157);
+            border-radius: 50%;
+        }
+
+        &-file {
+            display: none;
+        }
+
+        &-button {
+            border: 1px solid orange;
+            background-color: transparent;
+            color: orange;
+            padding: 8px;
+            border-radius: 8px;
+
+            &:hover {
+                background-color: orange;
+                color: white;
+            }
+        }
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+
+        &-input {
+            width: 300px;
+            border: 1px solid rgb(173, 173, 173);
+            height: 35px;
+            padding: 5px;
+            border-radius: 16px;
+            background-color: transparent;
+        }
+
+        &-submit {
+            border: 1px solid rgb(38, 206, 0);
+            background-color: transparent;
+            color: rgb(38, 206, 0);
+            padding: 8px;
+            border-radius: 8px;
+
+            &:hover {
+                background-color: rgb(38, 206, 0);
+                color: white;
+            }
+        }
+    }
+}

@@ -14,5 +14,6 @@ window.onload = function (): void {
   playListSelect(containerEl);
   inputSearch(containerEl);
   buttonTrackChange();
+  
   checkUser();
 };

@@ -1,10 +1,14 @@
-import { el } from "redom";
+import { el, svg } from "redom";
 
 import { getTracks } from "../server/getData.ts";
 
 import { postFavorites } from "../server/postData.ts";
 
 import { deleteFavorites } from "../server/deleteData.ts";
+
+const overlayEl: HTMLDivElement = document.querySelector(
+  ".overlay",
+) as HTMLDivElement;
 
 export function buttonLike(): void {
   const buttonEl: HTMLButtonElement[] = document.querySelectorAll(
@@ -31,9 +35,7 @@ export function buttonLike(): void {
           } else {
             deleteFavorites(res[normalId as unknown as number].id);
           }
-
         } else {
-          
         }
       });
     });
@@ -46,9 +48,6 @@ export function modalWindowButton(): void {
   ) as HTMLButtonElement;
 
   buttonEl.addEventListener("click", function (e) {
-    const overlayEl: HTMLDivElement | undefined | null = document.querySelector(
-      ".overlay",
-    ) as HTMLDivElement;
     const wrapperEl: HTMLDivElement | undefined | null = document.querySelector(
       ".modal-window",
     ) as HTMLDivElement;
@@ -80,6 +79,15 @@ export function modalWindowButton(): void {
             "Зарегестрироваться",
           ),
         ]),
+        el(
+          "button",
+          {
+            class: "modal-window__account",
+            ariaLabel: "Кнопка для изменения профиля",
+            // onclick: modalWindowClose,
+          },
+          "Профиль",
+        ),
       ]);
 
       function modalWindowClose(): void {
@@ -92,6 +100,84 @@ export function modalWindowButton(): void {
       overlayEl.style.display = "flex";
       wrapperEl.style.display = "flex";
     }
+
+    buttonAccount();
+  });
+}
+
+export function buttonAccount() {
+  const buttonAccount: HTMLButtonElement = document.querySelector(
+    ".modal-window__account",
+  ) as unknown as HTMLButtonElement;
+  const wrapperEl: HTMLDivElement | undefined | null = document.querySelector(
+    ".modal-window",
+  ) as HTMLDivElement;
+
+  buttonAccount.addEventListener("click", function (e) {
+    wrapperEl.style.display = "none";
+
+    const account = el("div", { class: "account" }, [
+      el("div", { class: "account__top" }, [
+        svg("svg", { class: "account__top-icon" }, [
+          svg("use", { href: "../../images/sprite.svg#icon-account-stub" }),
+        ]),
+        el("button", { class: "account__top-button" }, "Изменить фото"),
+        el("input", { class: "account__top-file", id: "file", type: "file" }),
+      ]),
+      el("form", { class: "account__form" }, [
+        el("input", {
+          class: "account__form-input",
+          id: "name",
+          type: "text",
+          placeholder: "Введите ваше имя",
+        }),
+        el(
+          "button",
+          { class: "account__form-submit", type: "submit" },
+          "Изменить",
+        ),
+      ]),
+    ]);
+
+    const main: HTMLElement = document.querySelector(".main") as HTMLElement;
+    main.append(overlayEl, account);
+
+    const inputName: HTMLInputElement = document.querySelector(
+      "#name",
+    ) as HTMLInputElement;
+
+    inputName.value = localStorage.getItem("username") || "User";
+
+    //-------event listeners--------
+    const buttonChange: HTMLButtonElement = document.querySelector(
+      ".account__top-button",
+    ) as HTMLButtonElement;
+    const file: HTMLInputElement = document.querySelector(
+      "#file",
+    ) as HTMLInputElement;
+
+    const formEl: HTMLButtonElement = document.querySelector(
+      ".account__form",
+    ) as HTMLButtonElement;
+
+    buttonChange.addEventListener("click", function (e) {
+      file.click();
+    });
+
+    file.addEventListener("change", function (e) {
+      const files = file.files;
+      if (!files || files.length === 0) return
+
+      const firstFile = files[0];
+      console.log(firstFile);
+    });
+
+    formEl.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      localStorage.setItem("username", `${inputName.value}`);
+      location.reload();
+    });
   });
 }
 

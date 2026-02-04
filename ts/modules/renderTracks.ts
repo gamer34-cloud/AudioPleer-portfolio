@@ -119,7 +119,7 @@ export async function render(
       document.querySelectorAll<HTMLButtonElement>(".table__date-like");
 
     buttonLikeEl.forEach((element) => {
-      element.classList.add('liked')
+      element.classList.add("liked");
     });
   }
 }

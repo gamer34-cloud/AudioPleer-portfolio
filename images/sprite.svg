@@ -127,6 +127,13 @@
         <rect x="6" y="4" width="4" height="16" fill="#ffffff" />
         <rect x="14" y="4" width="4" height="16" fill="#ffffff" />
     </symbol>
+    <symbol viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" id="icon-account-stub">
+        <circle cx="64" cy="40" r="24" fill="#ffffff" />
+        <path
+            d="M24 108c0-22 18-36 40-36s40 14 40 36"
+            fill="#ffffff"
+        />
+    </symbol>
 
 
 </svg>
