@@ -6,10 +6,6 @@ import { postFavorites } from "../server/postData.ts";
 
 import { deleteFavorites } from "../server/deleteData.ts";
 
-const overlayEl: HTMLDivElement = document.querySelector(
-  ".overlay",
-) as HTMLDivElement;
-
 export function buttonLike(): void {
   const buttonEl: HTMLButtonElement[] = document.querySelectorAll(
     ".like",
@@ -43,6 +39,9 @@ export function buttonLike(): void {
 }
 
 export function modalWindowButton(): void {
+  const overlayEl: HTMLDivElement = document.querySelector(
+    ".overlay",
+  ) as HTMLDivElement;
   const buttonEl: HTMLButtonElement = document.querySelector(
     ".hero__header-button",
   ) as HTMLButtonElement;
@@ -106,6 +105,9 @@ export function modalWindowButton(): void {
 }
 
 export function buttonAccount() {
+  const overlayEl: HTMLDivElement = document.querySelector(
+    ".overlay",
+  ) as HTMLDivElement;
   const buttonAccount: HTMLButtonElement = document.querySelector(
     ".modal-window__account",
   ) as unknown as HTMLButtonElement;
@@ -121,7 +123,10 @@ export function buttonAccount() {
         svg("svg", { class: "account__top-icon" }, [
           svg("use", { href: "../../images/sprite.svg#icon-account-stub" }),
         ]),
-        el("button", { class: "account__top-button" }, "Изменить фото"),
+        el("div", { class: "account__buttons" }, [
+          el("button", { class: "account__buttons-change" }, "Изменить фото"),
+          el("button", { class: "account__buttons-close" }, "Закрыть"),
+        ]),
         el("input", { class: "account__top-file", id: "file", type: "file" }),
       ]),
       el("form", { class: "account__form" }, [
@@ -150,7 +155,10 @@ export function buttonAccount() {
 
     //-------event listeners--------
     const buttonChange: HTMLButtonElement = document.querySelector(
-      ".account__top-button",
+      ".account__buttons-change",
+    ) as HTMLButtonElement;
+    const buttonClose: HTMLButtonElement = document.querySelector(
+      ".account__buttons-close",
     ) as HTMLButtonElement;
     const file: HTMLInputElement = document.querySelector(
       "#file",
@@ -164,9 +172,20 @@ export function buttonAccount() {
       file.click();
     });
 
+    buttonClose.addEventListener("click", function (e) {
+      const overlayEl: HTMLDivElement = document.querySelector(
+        ".overlay",
+      ) as HTMLDivElement;
+      const acc: HTMLDivElement = document.querySelector(
+        ".account",
+      ) as HTMLDivElement;
+      acc.style.display = "none";
+      overlayEl.style.display = "none";
+    });
+
     file.addEventListener("change", function (e) {
       const files = file.files;
-      if (!files || files.length === 0) return
+      if (!files || files.length === 0) return;
 
       const firstFile = files[0];
       console.log(firstFile);

@@ -23,17 +23,10 @@ try {
       Authorization: `Bearer ${token}`,
     },
   });
-  if(!response.status) {
-    const err = new Error('Account not found!')
-    err.name = 'accountError'
-    throw err
-  }
 } catch(error: unknown) {
-    if(error instanceof Error) {
       localStorage.removeItem('username')
       localStorage.removeItem('autarisation-token')
       localStorage.removeItem('last-song')
-    }
 }
 }
 

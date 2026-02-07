@@ -1,14 +1,26 @@
 .table {
-    padding: 0 30px 0 46px;
+    padding: 0 30px 20px 46px;
     display: flex;
     flex-direction: column;
+
+    @include vp-1023 {
+        padding: 20px 30px 20px 46px;
+    }
+
+    @include vp-767 {
+        padding: 0 0 20px;
+    }
 
 
     #table {
         border-spacing: 0px;
         border-collapse: collapse;
         width: 100%;
+        margin: 0 0 40px;
 
+        @include vp-1023 {
+            margin: 0;
+        }
     }
 
     @include vp-1023 {
@@ -88,6 +100,7 @@
             display: flex;
             align-items: center;
             width: 100%;
+            border-radius: 8px;
         }
 
         margin: 0 0 20px;
@@ -116,16 +129,25 @@
     &__mobale {
         display: none;
 
-        @include vp-767 {
+        @include vp-1023 {
             display: flex;
             gap: 10px;
             align-items: center;
             margin: 0 0 20px;
+
+            .is-active {
+                background-color: #FC6D3E;
+                color: $color-white;
+            }
+
+            .is-active .table__mobale-svg {
+                display: flex;
+            }
         }
 
         &-button {
-            background-color: #FC6D3E;
-            color: $color-white;
+            background-color: $color-white;
+            color: $color-black;
             border: none;
             padding: 10px 16px;
             border-radius: 30px;
@@ -133,18 +155,15 @@
             gap: 8px;
             align-items: center;
 
-            &--favorite {
-                gap: 0;
-                background-color: $color-white;
-                color: $color-black;
-            }
 
         }
 
         &-svg {
             width: 24px;
             height: 24px;
+            display: none;
         }
+
     }
 
     &__artist {
@@ -160,6 +179,10 @@
             @include vp-1023 {
                 font-size: 18px;
                 line-height: 100%;
+            }
+
+            @include vp-767 {
+                font-size: 13px;
             }
         }
 
@@ -204,6 +227,7 @@
             @include vp-1023 {
                 width: 70px;
                 height: 70px;
+                border-radius: 8px 0 0 8px;
             }
         }
     }

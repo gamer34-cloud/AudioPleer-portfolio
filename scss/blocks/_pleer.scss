@@ -127,10 +127,6 @@
             }
         }
 
-        #pause {
-            display: none;
-        }
-
         &-play {
             background-color: #AAAAAA;
             border: none;
@@ -139,14 +135,23 @@
             height: 40px;
             padding: 3px 0 0 2px;
 
-            &--active{
+            &--active {
                 padding: 0 0 0 7px;
+
+                @include vp-1023 {
+                    padding: 8px 0 0 8px;
+                }
+
+                #play-2,
                 #play {
                     display: none;
                 }
+
+                #pause-2,
                 #pause {
                     display: flex;
                 }
+
             }
 
             @include vp-1023 {
@@ -223,4 +228,12 @@
     }
 
 
+}
+
+#pause-2 {
+    display: none;
+}
+
+#pause {
+    display: none;
 }

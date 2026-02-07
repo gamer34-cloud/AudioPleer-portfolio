@@ -3,12 +3,22 @@ import { pagination } from "./pagination.ts";
 import { el, setChildren } from "redom";
 
 export function playListSelect(containerEL: HTMLElement) {
-  const buttonMain: HTMLButtonElement[] = document.querySelectorAll(
-    ".aside__button",
-  ) as unknown as HTMLButtonElement[];
-  const buttonEl: HTMLButtonElement[] = document.querySelectorAll(
-    ".aside__button",
-  ) as unknown as HTMLButtonElement[];
+  const width: number = window.screen.width as number;
+
+  let buttonMain: HTMLButtonElement[];
+  if (width >= 1023) {
+    buttonMain = document.querySelectorAll(
+      ".aside__button",
+    ) as unknown as HTMLButtonElement[];
+
+    buttonMain[1].classList.add("is-active");
+  } else {
+    buttonMain = document.querySelectorAll(
+      ".table__mobale-button",
+    ) as unknown as HTMLButtonElement[];
+
+    buttonMain[0].classList.add("is-active");
+  }
   let containerEl: HTMLElement = document.getElementById(
     "tracks",
   ) as HTMLElement;
@@ -16,19 +26,18 @@ export function playListSelect(containerEL: HTMLElement) {
     ".pagination",
   ) as HTMLDivElement;
 
-  buttonMain[1].classList.add("is-active");
-
-  buttonEl.forEach((elem) => {
+  buttonMain.forEach((elem) => {
     elem.addEventListener("click", function (e) {
-      for (let i = 0; i < buttonEl.length; i++) {
-        buttonEl[i].classList.remove("is-active");
+      for (let i = 0; i < buttonMain.length; i++) {
+        buttonMain[i].classList.remove("is-active");
       }
 
       elem.classList.toggle("is-active");
+      let text = elem.textContent.trim();
 
-      if (buttonMain[1].classList.contains("is-active")) {
+      if (text == "Аудиокомпозиции" && elem.classList.contains("is-active")) {
         pagination(0, 6, "base");
-      } else if (buttonMain[0].classList.contains("is-active")) {
+      } else if (text == "Избранное" && elem.classList.contains("is-active")) {
         getFavoriteTracks().then((res) => {
           try {
             if (res.length > 0) {

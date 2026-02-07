@@ -10,6 +10,11 @@
     flex-direction: column;
     gap: 15px;
 
+    @include vp-767 {
+        top: 35%;
+        left: 3%;
+    }
+
     &__top {
         display: flex;
         justify-content: space-between;
@@ -26,8 +31,13 @@
         &-file {
             display: none;
         }
+    }
 
-        &-button {
+    &__buttons {
+        display: flex;
+        gap: 10px;
+
+        &-change {
             border: 1px solid orange;
             background-color: transparent;
             color: orange;
@@ -36,6 +46,19 @@
 
             &:hover {
                 background-color: orange;
+                color: white;
+            }
+        }
+
+        &-close {
+            border: 1px solid rgb(223, 0, 0);
+            background-color: transparent;
+            color: rgb(223, 0, 0);
+            padding: 8px;
+            border-radius: 8px;
+
+            &:hover {
+                background-color: rgb(156, 0, 0);
                 color: white;
             }
         }

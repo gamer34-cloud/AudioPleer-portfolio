@@ -1,33 +1,44 @@
 import { getTracks } from "../server/getData";
 import { getRandomInt } from "./usefullFunctions";
 import { song } from "./typesAndInterfeis";
-import { locales } from "zod/v4/core";
+
+let ind = 0;
+
+if (window.screen.width <= 1023) {
+  ind = 0;
+} else {
+  ind = 1;
+}
 
 let audio: HTMLAudioElement = new Audio();
 let counter = 0;
 let volume = 0.5;
+
 const buttonShufleEl: HTMLButtonElement = document.querySelector(
   ".pleer__buttons-shufle",
 ) as HTMLButtonElement;
-const buttonPlayAndPauseEl: HTMLButtonElement = document.querySelector(
-  ".pleer__buttons-play",
+const buttonLoopEl: HTMLButtonElement = document.querySelector(
+  ".pleer__buttons-repeat",
 ) as HTMLButtonElement;
+const buttonPlayAndPauseEl: HTMLButtonElement[] = document.querySelectorAll(
+  ".play",
+) as unknown as HTMLButtonElement[];
 
-  const pleerTextEndEl: HTMLSpanElement = document.querySelector(
-    ".pleer__bottom-end",
-  ) as HTMLSpanElement;
+const pleerTextEndEl: HTMLSpanElement = document.querySelector(
+  ".pleer__bottom-end",
+) as HTMLSpanElement;
 
-  const titlePleerEl: HTMLSpanElement = document.querySelector(
-    ".pleer__artist-song",
-  ) as HTMLSpanElement;
+const titlePleerEl: HTMLSpanElement = document.querySelector(
+  ".pleer__artist-song",
+) as HTMLSpanElement;
 
-  const descriptionPleerEl: HTMLSpanElement = document.querySelector(
-    ".pleer__artist-name",
-  ) as HTMLSpanElement;
+const descriptionPleerEl: HTMLSpanElement = document.querySelector(
+  ".pleer__artist-name",
+) as HTMLSpanElement;
 
-  const durationPleerEL: HTMLSpanElement = document.querySelector(
-    ".pleer__bottom-end",
-  ) as HTMLSpanElement;
+const durationPleerEL: HTMLSpanElement = document.querySelector(
+  ".pleer__bottom-end",
+) as HTMLSpanElement;
 
 startPleer();
 
@@ -35,17 +46,6 @@ export function selectTrackButton(): void {
   const buttonEl: HTMLButtonElement[] = document.querySelectorAll(
     ".table__artist-button",
   ) as unknown as HTMLButtonElement[];
-  const titlePleerEl: HTMLSpanElement = document.querySelector(
-    ".pleer__artist-song",
-  ) as HTMLSpanElement;
-
-  const descriptionPleerEl: HTMLSpanElement = document.querySelector(
-    ".pleer__artist-name",
-  ) as HTMLSpanElement;
-
-  const durationPleerEL: HTMLSpanElement = document.querySelector(
-    ".pleer__bottom-end",
-  ) as HTMLSpanElement;
 
   const lastSongRaw = localStorage.getItem("last-song");
 
@@ -80,8 +80,6 @@ function base64ToAudio(base64: string): HTMLAudioElement {
 }
 
 export function audioPlay(id: number) {
-
-
   counter = id;
 
   getTracks().then((res) => {
@@ -109,7 +107,7 @@ export function audioPlay(id: number) {
     pleerTextEndEl.textContent = String(res[counter].duration);
     audio.play();
     audio.volume = volume;
-    buttonPlayAndPauseEl.classList.add("pleer__buttons-play--active");
+    buttonPlayAndPauseEl[ind].classList.add("pleer__buttons-play--active");
     scrollChange();
     update();
   });
@@ -119,7 +117,6 @@ function startPleer() {
   volumeChange();
   loop();
   shufle();
-  playAndPause();
 }
 
 export function buttonTrackChange() {
@@ -153,14 +150,14 @@ export function buttonTrackChange() {
 }
 
 function loop() {
-  const buttonLoopEl: HTMLButtonElement = document.querySelector(
-    ".pleer__buttons-repeat",
-  ) as HTMLButtonElement;
-
   buttonLoopEl.addEventListener("click", function (e) {
     if (buttonLoopEl.classList.contains("pleer__buttons-repeat--active")) {
       audio.loop = false;
       buttonLoopEl.classList.remove("pleer__buttons-repeat--active");
+    } else if (
+      buttonShufleEl.classList.contains("pleer__buttons-shufle--active")
+    ) {
+      buttonShufleEl.classList.remove("pleer__buttons-shufle--active");
     } else {
       audio.loop = true;
       buttonLoopEl.classList.add("pleer__buttons-repeat--active");
@@ -171,6 +168,9 @@ function loop() {
 function shufle() {
   buttonShufleEl.addEventListener("click", function (e) {
     buttonShufleEl.classList.toggle("pleer__buttons-shufle--active");
+    if (buttonLoopEl.classList.contains("pleer__buttons-repeat--active")) {
+      buttonLoopEl.classList.remove("pleer__buttons-repeat--active");
+    }
   });
 }
 
@@ -185,25 +185,26 @@ function volumeChange() {
   });
 }
 
-function playAndPause() {
-  buttonPlayAndPauseEl.addEventListener("click", function (e) {
-    if (
-      buttonPlayAndPauseEl.classList.contains("pleer__buttons-play--active") &&
-      audio
-    ) {
-      audio.pause();
-      buttonPlayAndPauseEl.classList.remove("pleer__buttons-play--active");
-    } else {
-      if (audio.src != undefined && audio.src != "" && audio.src != null) {
-        audio.play();
-        buttonPlayAndPauseEl.classList.add("pleer__buttons-play--active");
+export function playAndPause() {
+  buttonPlayAndPauseEl.forEach((elem) => {
+    elem.addEventListener("click", function (e) {
+      if (elem.classList.contains("pleer__buttons-play--active") && audio) {
+        audio.pause();
+        elem.classList.remove("pleer__buttons-play--active");
       } else {
-        const data: song = JSON.parse(localStorage.getItem("last-song") as string) as unknown as song;
-        const id = Number(data.id);
-        
-        audioPlay(id - 1);
+        if (audio.src != undefined && audio.src != "" && audio.src != null) {
+          audio.play();
+          elem.classList.add("pleer__buttons-play--active");
+        } else {
+          const data: song = JSON.parse(
+            localStorage.getItem("last-song") as string,
+          ) as unknown as song;
+          const id = Number(data.id);
+
+          audioPlay(id - 1);
+        }
       }
-    }
+    });
   });
 }
 

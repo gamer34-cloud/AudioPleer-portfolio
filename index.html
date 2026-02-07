@@ -76,7 +76,12 @@
                         </svg>
                         <span>Аудиокомпозиции</span>
                     </button>
-                    <button class="table__mobale-button table__mobale-button--favorite">Избранное</button>
+                    <button class="table__mobale-button table__mobale-button--favorite">
+                        <svg class="table__mobale-svg" xmlns="http://www.w3.org/2000/svg">
+                            <use xlink:href="./images/sprite.svg#icon-play-button"></use>
+                        </svg>
+                        <span>Избранное</span>
+                    </button>
                 </div>
                 <h2 class="table__title">Аудифайлы и треки</h2>
                 <div id="tracks">
@@ -93,16 +98,19 @@
                 <div class="pleer__artist">
                     <span class="pleer__artist-song">Histoire Sans Nom
                         <button type="button" class="pleer__artist-button like">
-                            <svg class="pleer__artist-like" xmlns="http://www.w3.org/2000/svg">
+                            <svg class="pleer__svgs" xmlns="http://www.w3.org/2000/svg">
                                 <use href="./images/sprite.svg#icon-like"></use>
                             </svg>
                         </button>
                     </span>
                     <span class="pleer__artist-name">Ludovico Einaudi, Czech National Symphony Orchestra</span>
                 </div>
-                <button class="pleer__album-play">
-                    <svg class="pleer__artist-like" xmlns="http://www.w3.org/2000/svg">
+                <button class="pleer__album-play play">
+                    <svg class="pleer__svgs" xmlns="http://www.w3.org/2000/svg" id="play-2">
                         <use href="./images/sprite.svg#icon-play"></use>
+                    </svg>
+                    <svg class="pleer__svgs" xmlns="http://www.w3.org/2000/svg" id="pause-2">
+                        <use href="./images/sprite.svg#icon-pause"></use>
                     </svg>
                 </button>
             </div>
@@ -118,7 +126,7 @@
                             <use href="./images/sprite.svg#icon-back"></use>
                         </svg>
                     </button>
-                    <button class="pleer__buttons-play" aria-label="Кнопка для начала песни">
+                    <button class="pleer__buttons-play play" aria-label="Кнопка для начала песни">
                         <svg class="pleer__svgs" xmlns="http://www.w3.org/2000/svg" id="play">
                             <use href="./images/sprite.svg#icon-play"></use>
                         </svg>

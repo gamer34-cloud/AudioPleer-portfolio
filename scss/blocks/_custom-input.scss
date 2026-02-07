@@ -43,6 +43,10 @@
         border: 1px solid;
         border-color: transparent;
 
+        @include vp-767 {
+            width: 100%;
+        }
+
         &:focus-visible,
         &:hover {
             border-color: black;

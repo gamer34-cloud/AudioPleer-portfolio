@@ -599,6 +599,11 @@ button {
   border: 1px solid;
   border-color: transparent;
 }
+@media (max-width: 767px) {
+  .custom-input__field {
+    width: 100%;
+  }
+}
 .custom-input__field:focus-visible, .custom-input__field:hover {
   border-color: black;
 }
@@ -625,14 +630,30 @@ button {
 }
 
 .table {
-  padding: 0 30px 0 46px;
+  padding: 0 30px 20px 46px;
   display: flex;
   flex-direction: column;
+}
+@media (max-width: 1023px) {
+  .table {
+    padding: 20px 30px 20px 46px;
+  }
+}
+@media (max-width: 767px) {
+  .table {
+    padding: 0 0 20px;
+  }
 }
 .table #table {
   border-spacing: 0px;
   border-collapse: collapse;
   width: 100%;
+  margin: 0 0 40px;
+}
+@media (max-width: 1023px) {
+  .table #table {
+    margin: 0;
+  }
 }
 @media (max-width: 1023px) {
   .table {
@@ -713,6 +734,7 @@ button {
     display: flex;
     align-items: center;
     width: 100%;
+    border-radius: 8px;
   }
 }
 .table td {
@@ -734,17 +756,24 @@ button {
 .table__mobale {
   display: none;
 }
-@media (max-width: 767px) {
+@media (max-width: 1023px) {
   .table__mobale {
     display: flex;
     gap: 10px;
     align-items: center;
     margin: 0 0 20px;
   }
+  .table__mobale .is-active {
+    background-color: #FC6D3E;
+    color: #ffffff;
+  }
+  .table__mobale .is-active .table__mobale-svg {
+    display: flex;
+  }
 }
 .table__mobale-button {
-  background-color: #FC6D3E;
-  color: #ffffff;
+  background-color: #ffffff;
+  color: #000000;
   border: none;
   padding: 10px 16px;
   border-radius: 30px;
@@ -752,14 +781,10 @@ button {
   gap: 8px;
   align-items: center;
 }
-.table__mobale-button--favorite {
-  gap: 0;
-  background-color: #ffffff;
-  color: #000000;
-}
 .table__mobale-svg {
   width: 24px;
   height: 24px;
+  display: none;
 }
 .table__artist {
   display: flex;
@@ -775,6 +800,11 @@ button {
   .table__artist-album {
     font-size: 18px;
     line-height: 100%;
+  }
+}
+@media (max-width: 767px) {
+  .table__artist-album {
+    font-size: 13px;
   }
 }
 .table__artist-button {
@@ -811,6 +841,7 @@ button {
   .table__artist-img {
     width: 70px;
     height: 70px;
+    border-radius: 8px 0 0 8px;
   }
 }
 .table__icon {
@@ -990,9 +1021,6 @@ button {
     display: none;
   }
 }
-.pleer__buttons #pause {
-  display: none;
-}
 .pleer__buttons-play {
   background-color: #AAAAAA;
   border: none;
@@ -1004,9 +1032,16 @@ button {
 .pleer__buttons-play--active {
   padding: 0 0 0 7px;
 }
+@media (max-width: 1023px) {
+  .pleer__buttons-play--active {
+    padding: 8px 0 0 8px;
+  }
+}
+.pleer__buttons-play--active #play-2,
 .pleer__buttons-play--active #play {
   display: none;
 }
+.pleer__buttons-play--active #pause-2,
 .pleer__buttons-play--active #pause {
   display: flex;
 }
@@ -1069,6 +1104,14 @@ button {
   height: 6px;
 }
 
+#pause-2 {
+  display: none;
+}
+
+#pause {
+  display: none;
+}
+
 .modal-window {
   background-color: white;
   z-index: 10;
@@ -1080,6 +1123,12 @@ button {
   display: flex;
   flex-direction: column;
   gap: 15px;
+}
+@media (max-width: 767px) {
+  .modal-window {
+    top: 40%;
+    left: 15%;
+  }
 }
 .modal-window__close {
   background-color: rgb(255, 12, 12);
@@ -1131,6 +1180,13 @@ button {
   position: absolute;
   top: 35%;
   left: 40%;
+}
+@media (max-width: 767px) {
+  .form-authorization {
+    left: 30px;
+    max-width: 300px;
+    width: 100%;
+  }
 }
 .form-authorization__wrapper {
   border: none;
@@ -1219,8 +1275,10 @@ button {
 }
 @media (max-width: 767px) {
   .option-card {
-    top: 10px;
-    left: -40px;
+    top: 15px;
+    left: -75px;
+    height: 40px;
+    width: 110px;
   }
 }
 .option-card--active {
@@ -1233,6 +1291,12 @@ button {
   border-radius: 8px;
   font-size: 13px;
 }
+@media (max-width: 767px) {
+  .option-card__text {
+    font-size: 11px;
+    line-height: 10px;
+  }
+}
 
 .pagination {
   display: flex;
@@ -1243,7 +1307,8 @@ button {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-  width: 500px;
+  max-width: 500px;
+  width: 100%;
   padding: 0;
   margin: 0;
   gap: 20px 10px;
@@ -1259,6 +1324,13 @@ button {
   padding: 5px;
   border-radius: 8px;
   transition: background-color 0.2s linear;
+}
+@media (max-width: 767px) {
+  .pagination__button {
+    width: 40px;
+    height: 40px;
+    font-size: 21px;
+  }
 }
 .pagination__button--active, .pagination__button:hover {
   background-color: rgb(255, 128, 0);
@@ -1291,6 +1363,12 @@ button {
   flex-direction: column;
   gap: 15px;
 }
+@media (max-width: 767px) {
+  .account {
+    top: 35%;
+    left: 3%;
+  }
+}
 .account__top {
   display: flex;
   justify-content: space-between;
@@ -1306,15 +1384,30 @@ button {
 .account__top-file {
   display: none;
 }
-.account__top-button {
+.account__buttons {
+  display: flex;
+  gap: 10px;
+}
+.account__buttons-change {
   border: 1px solid orange;
   background-color: transparent;
   color: orange;
   padding: 8px;
   border-radius: 8px;
 }
-.account__top-button:hover {
+.account__buttons-change:hover {
   background-color: orange;
+  color: white;
+}
+.account__buttons-close {
+  border: 1px solid rgb(223, 0, 0);
+  background-color: transparent;
+  color: rgb(223, 0, 0);
+  padding: 8px;
+  border-radius: 8px;
+}
+.account__buttons-close:hover {
+  background-color: rgb(156, 0, 0);
   color: white;
 }
 .account__form {

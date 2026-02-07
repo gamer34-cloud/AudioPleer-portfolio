@@ -6,6 +6,7 @@ import {
   buttonOption,
 } from "./buttonFunctions.ts";
 import { track } from "./typesAndInterfeis.ts";
+import { selectTrackButton, buttonTrackChange } from "./audio.ts";
 
 export async function render(
   containerEl: HTMLElement,
@@ -113,6 +114,8 @@ export async function render(
   init();
   setTimeout(() => buttonLike(), 50);
   modalWindowButton();
+  setTimeout(() => selectTrackButton(), 1000);
+  buttonTrackChange();
   setTimeout(() => buttonOption(), 50);
   if (playlist == "fav") {
     const buttonLikeEl =

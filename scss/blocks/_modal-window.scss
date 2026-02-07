@@ -10,6 +10,11 @@
     flex-direction: column;
     gap: 15px;
 
+    @include vp-767 {
+        top: 40%;
+        left: 15%;
+    }
+
     &__close {
         background-color: rgb(255, 12, 12);
         color: white;

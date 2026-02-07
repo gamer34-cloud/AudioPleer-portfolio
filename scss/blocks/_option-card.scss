@@ -11,8 +11,10 @@
     background-color: rgb(38, 38, 38);
 
     @include vp-767 {
-            top: 10px;
-    left: -40px;
+        top: 15px;
+        left: -75px;
+        height: 40px;
+        width: 110px;
     }
 
     &--active {
@@ -25,5 +27,10 @@
         padding: 5px;
         border-radius: 8px;
         font-size: 13px;
+
+        @include vp-767 {
+            font-size: 11px;
+            line-height: 10px;
+        }
     }
 }
