@@ -2,11 +2,14 @@ import { getTracks, getFavoriteTracks } from "../server/getData.ts";
 import { el } from "redom";
 import { render } from "./renderTracks.ts";
 import { field, track } from "./typesAndInterfeis.ts";
+import { getLoader } from "./usefullFunctions.ts";
 
 const stub: field = {
   text: "",
   index: 0,
 };
+
+const loader: HTMLElement = getLoader() as unknown as HTMLElement;
 
 export function pagination(
   start: number = 0,
@@ -61,6 +64,7 @@ export function pagination(
     //Отрисовка лайкнутых треков
 
     getFavoriteTracks().then((tracks) => {
+      document.body.append(loader);
       if (
         search.text != undefined &&
         search.text != null &&
@@ -85,6 +89,9 @@ export function pagination(
 
       render(containerEl, newTracks, playlist);
       paginationButtons(playlist);
+      setTimeout(() => {
+        loader.remove();
+      }, 500);
     });
   }
 }
@@ -96,6 +103,8 @@ export function paginationButtons(playlist: "fav" | "base"): void {
 
   buttons.forEach((elem, index) => {
     elem.addEventListener("click", function (e) {
+      document.body.append(loader);
+
       for (let i of buttons) {
         i.classList.remove("pagination__button--active");
       }
@@ -107,6 +116,9 @@ export function paginationButtons(playlist: "fav" | "base"): void {
       } else {
         pagination(0, 6, playlist);
       }
+      setTimeout(() => {
+        loader.remove();
+      }, 500);
       elem.classList.add("pagination__button--active");
     });
   });

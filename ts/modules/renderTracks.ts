@@ -25,7 +25,7 @@ export async function render(
 
         el("td", [
           el("div", { class: "table__artist" }, [
-            el("button", { class: "table__artist-button" }, [
+            el("button", { class: "table__artist-button", id: `${elem.id}`}, [
               el("img", {
                 class: "table__artist-img",
                 src: "./images/img-oblojca.jpg",

@@ -1,6 +1,7 @@
 import { getFavoriteTracks } from "../server/getData.ts";
 import { pagination } from "./pagination.ts";
 import { el, setChildren } from "redom";
+import { getLoader } from "./usefullFunctions.ts";
 
 export function playListSelect(containerEL: HTMLElement) {
   const width: number = window.screen.width as number;
@@ -28,6 +29,10 @@ export function playListSelect(containerEL: HTMLElement) {
 
   buttonMain.forEach((elem) => {
     elem.addEventListener("click", function (e) {
+      //loader
+      const loader: HTMLElement = getLoader() as unknown as HTMLElement;
+      document.body.append(loader);
+
       for (let i = 0; i < buttonMain.length; i++) {
         buttonMain[i].classList.remove("is-active");
       }
@@ -37,11 +42,15 @@ export function playListSelect(containerEL: HTMLElement) {
 
       if (text == "Аудиокомпозиции" && elem.classList.contains("is-active")) {
         pagination(0, 6, "base");
+        setTimeout(() => {
+          loader.remove();
+        }, 500)
       } else if (text == "Избранное" && elem.classList.contains("is-active")) {
         getFavoriteTracks().then((res) => {
           try {
             if (res.length > 0) {
               pagination(0, 6, "fav");
+              loader.remove();
             } else {
               const err = new Error("войдите или добавте песню в избранные");
               err.name = "Authorization";

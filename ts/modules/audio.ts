@@ -59,7 +59,7 @@ export function selectTrackButton(): void {
 
   buttonEl.forEach((elem, index) => {
     elem.addEventListener("click", function (e) {
-      audioPlay(index);
+      audioPlay(Number(elem.id) - 1);
     });
   });
 }
